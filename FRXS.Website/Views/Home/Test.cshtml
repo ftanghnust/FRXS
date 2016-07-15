@@ -1,0 +1,76 @@
+﻿@{
+    ViewBag.Title = "Test";
+}
+<script type="text/javascript">
+    
+
+
+    $(function() {
+        initTab("tab");
+    });
+
+    function initTab(id) {
+        $("#" + id + " tr").each(function(i) {
+            $(this).find("input").each(function(j) {
+                $(this).attr("index", i + "-" + j);
+            });
+        });
+
+
+        $("#" + id + " tr input").each(function(i) {
+            $(this).keyup(function(e) {
+                
+                selectFocus(e.keyCode, $(this).attr("index"));
+
+            });
+        });
+    }
+
+
+    function selectFocus(keyCode, tabindex) {
+        var i = parseInt(tabindex.split('-')[0]);
+        var j = parseInt(tabindex.split('-')[1]);
+        if(keyCode==40) {
+            i = i + 1;
+            $("#tab input[index='" + i + "-" + j + "']").select();
+        } else if(keyCode==38) {
+            i = i - 1;
+            $("#tab input[index='" + i + "-" + j + "']").select();
+        }
+    }
+
+</script>
+<table border="1" style="width: 600px;" id="tab">
+    <tr>
+        <td>234</td>
+        <td><input type="text"/></td>
+        <td>234</td>
+        <td>234</td>
+        <td><input type="text"/></td>
+        <td>234</td>
+    </tr>
+    <tr>
+        <td>234</td>
+        <td><input type="text"/></td>
+        <td>234</td>
+        <td>234</td>
+        <td><input type="text"/></td>
+        <td>234</td>
+    </tr>
+    <tr>
+        <td>234</td>
+        <td><input type="text"/></td>
+        <td>234</td>
+        <td>234</td>
+        <td><input type="text"/></td>
+        <td>234</td>
+    </tr>
+    <tr>
+        <td>234</td>
+        <td><input type="text"/></td>
+        <td>234</td>
+        <td>234</td>
+        <td><input type="text"/></td>
+        <td>234</td>
+    </tr>
+</table>

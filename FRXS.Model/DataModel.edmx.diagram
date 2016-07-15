@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1969f38d1a6547759a381b92c8e9ee97" Name="关系图1">
+        <EntityTypeShape EntityType="FRXSModel.OrgUser" Width="1.5" PointX="2.75" PointY="2.625" />
+        <EntityTypeShape EntityType="FRXSModel.Product" Width="1.5" PointX="5.125" PointY="3.625" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

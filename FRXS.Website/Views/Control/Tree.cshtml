@@ -1,0 +1,258 @@
+﻿@{
+    ViewBag.Title = "Tree";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript">
+    $(function () {
+        $("#tree").tree({
+            data: [{
+                    id: 123,
+                    text: '芙蓉兴盛',
+                    state: 'closed',
+                    children: [{
+                            id: 111,
+                            text: '电商'
+                        }, {
+                            text: 'Item12'
+                        }, {
+                            text: 'Item12'
+                        }, {
+                            text: 'Item12'
+                        }]
+                }, {
+                    text: '芙蓉兴盛',
+                    children: [{
+                        id: 111,
+                        text: '安卓'
+                    }, {
+                        text: 'Item12'
+                    }, {
+                        text: 'Item12'
+                    }, {
+                        text: 'Item12'
+                    }]
+                }],
+            checkbox: true,
+            onSelect: function (node) {
+                $.messager.alert("提示","你选中了 text:" + node.text + "  id:" + node.id,"info");
+            }
+        });
+    });
+
+
+    //移除选中
+    function removeNode() {
+        //得到选中单个
+        //var node = $('#tree').tree('getSelected');
+        //$('#tree').tree('remove', node.target);
+        
+        var node = $('#tree').tree('getChecked');
+        $(node).each(function () {
+            $('#tree').tree('remove', this.target);
+        });
+        
+        
+    }
+    
+    //添加一个
+    function addNode() {
+        var node = $('#tree').tree('getSelected');
+        $('#tree').tree('append', {
+            parent: node.target,
+            data: [{
+                text: '新加的'
+            }, {
+                text: '新加的',
+                state: 'closed',
+                children: [{
+                    text: '新加的'
+                }, {
+                    text: '新加的'
+                }]
+            }]
+        });
+    }
+
+
+</script>
+
+<div style="margin: 20px">
+    <!-- html创建 -->
+    <div style="float: left;">
+        <ul class="easyui-tree" animate="true" lines="true">  
+            <li>  
+                <span>芙蓉兴盛</span>  
+                <ul>  
+                    <li>  
+                        <span>电商</span>  
+                        <ul>  
+                            <li>  
+                                <span><a href="#">安卓</a></span>  
+                            </li>  
+                            <li>  
+                                <span>.NET</span>  
+                            </li>  
+                            <li>  
+                                <span>IOS</span>  
+                            </li>  
+                        </ul>  
+                    </li>  
+                    <li>  
+                        <span>产品</span>
+                    </li>  
+                    <li>  
+                        <span>架构</span>  
+                    </li>  
+                </ul>  
+            </li>  
+            <li>  
+                <span>Other</span>  
+            </li>  
+        </ul>
+    </div>
+
+    <!-- js创建 -->
+    <div style="float: left; margin-left: 20px;">
+        <div id="tree"></div>
+    
+    </div>
+
+    <div style="float: left; margin-left: 20px;">
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" onclick="addNode()">添加节点</a>
+        <br />
+        <br />
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-no" onclick="removeNode()">删除选中</a>
+    </div>
+
+</div>
+
+
+
+<!--程序源码展示-->
+<textarea style="width: 60%; height: 600px; float: left; margin-left: 20px; line-height: 20px; font-size: 13px;">
+    
+<script type="text/javascript">
+    $(function () {
+        $("#tree").tree({
+            data: [{
+                id: 123,
+                text: '芙蓉兴盛',
+                state: 'closed',
+                children: [{
+                    id: 111,
+                    text: '电商'
+                }, {
+                    text: 'Item12'
+                }, {
+                    text: 'Item12'
+                }, {
+                    text: 'Item12'
+                }]
+            }, {
+                text: '芙蓉兴盛',
+                children: [{
+                    id: 111,
+                    text: '安卓'
+                }, {
+                    text: 'Item12'
+                }, {
+                    text: 'Item12'
+                }, {
+                    text: 'Item12'
+                }]
+            }],
+            checkbox: true,
+            onSelect: function (node) {
+                $.messager.alert("提示", "你选中了 text:" + node.text + "  id:" + node.id, "info");
+            }
+        });
+    });
+
+
+    //移除选中
+    function removeNode() {
+        //得到选中单个
+        //var node = $('#tree').tree('getSelected');
+        //$('#tree').tree('remove', node.target);
+
+        var node = $('#tree').tree('getChecked');
+        $(node).each(function () {
+            $('#tree').tree('remove', this.target);
+        });
+
+
+    }
+
+    //添加一个
+    function addNode() {
+        var node = $('#tree').tree('getSelected');
+        $('#tree').tree('append', {
+            parent: node.target,
+            data: [{
+                text: '新加的'
+            }, {
+                text: '新加的',
+                state: 'closed',
+                children: [{
+                    text: '新加的'
+                }, {
+                    text: '新加的'
+                }]
+            }]
+        });
+    }
+
+
+</script>
+
+<div style="margin: 20px">
+    <!-- html创建 -->
+    <div style="float: left;">
+        <ul class="easyui-tree" animate="true" lines="true">  
+            <li>  
+                <span>芙蓉兴盛</span>  
+                <ul>  
+                    <li>  
+                        <span>电商</span>  
+                        <ul>  
+                            <li>  
+                                <span><a href="#">安卓</a></span>  
+                            </li>  
+                            <li>  
+                                <span>.NET</span>  
+                            </li>  
+                            <li>  
+                                <span>IOS</span>  
+                            </li>  
+                        </ul>  
+                    </li>  
+                    <li>  
+                        <span>产品</span>
+                    </li>  
+                    <li>  
+                        <span>架构</span>  
+                    </li>  
+                </ul>  
+            </li>  
+            <li>  
+                <span>Other</span>  
+            </li>  
+        </ul>
+    </div>
+
+    <!-- js创建 -->
+    <div style="float: left; margin-left: 20px;">
+        <div id="tree"></div>
+    
+    </div>
+
+    <div style="float: left; margin-left: 20px;">
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" onclick="addNode()">添加节点</a>
+        <br />
+        <br />
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-no" onclick="removeNode()">删除选中</a>
+    </div>
+
+</div>
+</textarea>

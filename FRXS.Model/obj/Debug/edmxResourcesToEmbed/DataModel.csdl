@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FRXSModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="FRXSEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="OrgUser" EntityType="FRXSModel.OrgUser" />
+    <EntitySet Name="Product" EntityType="FRXSModel.Product" />
+  </EntityContainer>
+  <EntityType Name="OrgUser">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Type="Int32" Name="UserId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="UserName" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="UserTrueName" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Password" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Sex" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Age" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Tel" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Phone" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Com" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Address" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Shen" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Shi" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Qu" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Xian" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="ProductName" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

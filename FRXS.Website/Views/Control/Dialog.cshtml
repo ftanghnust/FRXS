@@ -1,0 +1,90 @@
+﻿@{
+    ViewBag.Title = "Dialog";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<script type="text/javascript">
+    function openDialog() {
+        
+       $("#dialog").dialog({
+            title: '添加',
+            iconCls: "icon-add",
+            collapsible: true,          //是否能收缩
+            minimizable: true,          //是否有最小化
+            maximizable: true,          //是否有最大化
+            resizable: true,            //是否能拉升
+            width: $(window).width() * 0.5,
+            height: $(window).height() * 0.5,
+            modal: true,
+            href: "../control/accordion",
+            onClose: function () {
+                $.messager.alert("窗口", "你关闭了窗口", "info");
+            },
+            buttons: [{
+                    text: '保存',
+                    iconCls: 'icon-ok',
+                    handler: function() {
+                        $.messager.alert("窗口","你点击了保存","info");
+                    }
+                }, {
+                    text: '关闭',
+                    iconCls: 'icon-cancel',
+                    handler: function() {
+                        $('#dialog').dialog('close');
+                    }
+                }]
+        });
+    }
+
+</script>
+
+<div style="margin: 20px">
+<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" onclick="openDialog()">打开Dialog</a>
+
+<div id="dialog"></div>
+
+</div>
+
+<!--程序源码展示-->
+<textarea style="width: 60%; height: 600px; float: left; margin-left: 20px; line-height: 20px; font-size: 13px;">
+    <script type="text/javascript">
+        function openDialog() {
+
+            $("#dialog").dialog({
+                title: '添加',
+                iconCls: "icon-add",
+                modal: true,                //是否有遮罩
+                collapsible: true,          //是否能收缩
+                minimizable: true,          //是否有最小化
+                maximizable: true,          //是否有最大化
+                resizable: true,            //是否能拉升
+                width: $(window).width() * 0.5,
+                height: $(window).height() * 0.5,
+                href: "../control/accordion",
+                onClose: function () {
+                    $.messager.alert("窗口", "你关闭了窗口", "info");
+                },
+                buttons: [{
+                    text: '保存',
+                    iconCls: 'icon-ok',
+                    handler: function () {
+                        $.messager.alert("窗口", "你点击了保存", "info");
+                    }
+                }, {
+                    text: '关闭',
+                    iconCls: 'icon-cancel',
+                    handler: function () {
+                        $('#dialog').dialog('close');
+                    }
+                }]
+            });
+        }
+
+</script>
+
+
+<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" onclick="openDialog()">打开Dialog</a>
+
+<div id="dialog"></div>
+</textarea>

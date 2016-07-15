@@ -1,0 +1,144 @@
+﻿@{
+    ViewBag.Title = "Treegrid";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<script type="text/javascript">
+
+    $(function () {
+        var data = [{
+            uId:1,
+            uName: "芙蓉兴盛",
+            children: [
+                {
+                    uId: 11,
+                    uName: "电商"
+                },
+                {
+                    uId: 12,
+                    uName: "产品",
+                },
+                {
+                    uId: 13,
+                    uName: "产品2",
+                }
+            ] 
+        },
+        {
+            uId: 2,
+            uName: "芙蓉兴盛2",
+            children: [
+                {
+                    uId: 21,
+                    uName: "电商2",
+                },
+                {
+                    uId: 22,
+                    uName: "产品2",
+                },
+                {
+                    uId: 23,
+                    uName: "产品22",
+                }
+            ]
+        }];
+        $('#treegrid').treegrid({
+            data: data,
+            treeField: 'uName',
+            idField: 'uId',
+            rownumbers: true,
+            fitColumns: true,
+            animate: true,
+            singleSelect: true,
+            columns: [[
+                {
+                    field: 'uName', title: 'uName', width: 120
+                },
+                {
+                    field: 'uId', title: 'uId', width: 120
+                }
+            ]]
+        });
+    });
+
+</script>
+
+
+
+<div style="margin: 20px">
+    <div id="treegrid"></div>
+</div>
+
+
+
+<!--程序源码展示-->
+<textarea style="width: 60%; height: 600px; float: left; margin-left: 20px; line-height: 20px; font-size: 13px;">
+    
+<script type="text/javascript">
+
+    $(function () {
+        var data = [{
+            uId: 1,
+            uName: "芙蓉兴盛",
+            children: [
+                {
+                    uId: 11,
+                    uName: "电商"
+                },
+                {
+                    uId: 12,
+                    uName: "产品",
+                },
+                {
+                    uId: 13,
+                    uName: "产品2",
+                }
+            ]
+        },
+        {
+            uId: 2,
+            uName: "芙蓉兴盛2",
+            children: [
+                {
+                    uId: 21,
+                    uName: "电商2",
+                },
+                {
+                    uId: 22,
+                    uName: "产品2",
+                },
+                {
+                    uId: 23,
+                    uName: "产品22",
+                }
+            ]
+        }];
+        $('#treegrid').treegrid({
+            data: data,
+            treeField: 'uName',
+            idField: 'uId',
+            rownumbers: true,
+            fitColumns: true,
+            animate: true,
+            singleSelect: true,
+            columns: [[
+                {
+                    field: 'uName', title: 'uName', width: 120
+                },
+                {
+                    field: 'uId', title: 'uId', width: 120
+                }
+            ]]
+        });
+    });
+
+</script>
+
+
+
+<div style="margin: 20px">
+    <div id="treegrid"></div>
+</div>
+
+</textarea>

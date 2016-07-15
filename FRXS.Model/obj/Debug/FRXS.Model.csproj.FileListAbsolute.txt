@@ -1,0 +1,17 @@
+E:\MyProject\FRXS\FRXS.Model\bin\Debug\FRXS.Model.dll.config
+E:\MyProject\FRXS\FRXS.Model\bin\Debug\FRXS.Model.dll
+E:\MyProject\FRXS\FRXS.Model\bin\Debug\FRXS.Model.pdb
+E:\MyProject\FRXS\FRXS.Model\bin\Debug\EntityFramework.dll
+E:\MyProject\FRXS\FRXS.Model\bin\Debug\EntityFramework.xml
+E:\MyProject\FRXS\FRXS.Model\bin\Debug\zh-Hans\EntityFramework.resources.dll
+E:\MyProject\FRXS\FRXS.Model\obj\Debug\FRXS.Model.dll
+E:\MyProject\FRXS\FRXS.Model\obj\Debug\FRXS.Model.pdb
+E:\MyProject\FRXS\FRXS.Model\obj\Debug\FRXS.Model.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\FRXS\FRXS.Model\bin\Debug\FRXS.Model.dll.config
+C:\Users\Administrator\Desktop\FRXS\FRXS.Model\bin\Debug\FRXS.Model.dll
+C:\Users\Administrator\Desktop\FRXS\FRXS.Model\bin\Debug\FRXS.Model.pdb
+C:\Users\Administrator\Desktop\FRXS\FRXS.Model\bin\Debug\EntityFramework.dll
+C:\Users\Administrator\Desktop\FRXS\FRXS.Model\bin\Debug\EntityFramework.xml
+C:\Users\Administrator\Desktop\FRXS\FRXS.Model\bin\Debug\zh-Hans\EntityFramework.resources.dll
+C:\Users\Administrator\Desktop\FRXS\FRXS.Model\obj\Debug\FRXS.Model.dll
+C:\Users\Administrator\Desktop\FRXS\FRXS.Model\obj\Debug\FRXS.Model.pdb

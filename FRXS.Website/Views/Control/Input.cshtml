@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Input";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<style type="text/css">
+    .text {
+        border: 1px solid #95B8E7;
+        height: 18px;
+        border-radius: 8%;
+        padding: 2px;
+    }
+</style>
+
+<div style="margin: 20px">
+    普通文本框： <input type="text" class="text"/><br /><br />
+    数字文本框： <input class="easyui-numberspinner" value="5" data-options="min:1,max:10,editable:false"><br /><br />
+    时间文本框： <input class="easyui-timespinner" value="10:30" data-options="min:'08:30',showSeconds:true" /><br /><br /> 
+    金钱文本框： <input type="text" class="easyui-numberbox" value="100" data-options="min:0,precision:2,prefix:'￥'"/><br /><br /> 
+    金钱文本框： <input type="text" class="easyui-numberbox" value="100000000" data-options="min:0,precision:2,prefix:'￥',decimalSeparator:'.',groupSeparator:','"/><br /><br /> 
+    日期文本框： <input type="text" class="easyui-datebox"/><br /><br />  
+
+</div>
+
+
+
+<!--程序源码展示-->
+<textarea style="width: 60%; height: 600px; float: left; margin-left: 20px; line-height: 20px; font-size: 13px;">
+    <style type="text/css">
+    .text {
+        border: 1px solid #95B8E7;
+        height: 18px;
+        border-radius: 8%;
+        padding: 2px;
+    }
+</style>
+
+<div style="margin: 20px">
+    普通文本框： <input type="text" class="text"/><br /><br />
+    数字文本框： <input class="easyui-numberspinner" value="5" data-options="min:1,max:10,editable:false"><br /><br />
+    时间文本框： <input class="easyui-timespinner" value="10:30" data-options="min:'08:30',showSeconds:true" /><br /><br /> 
+    金钱文本框： <input type="text" class="easyui-numberbox" value="100" data-options="min:0,precision:2,prefix:'￥'"/><br /><br /> 
+    金钱文本框： <input type="text" class="easyui-numberbox" value="100000000" data-options="min:0,precision:2,prefix:'￥',decimalSeparator:'.',groupSeparator:','"/><br /><br /> 
+    日期文本框： <input type="text" class="easyui-datebox"/><br /><br />  
+
+</div>
+</textarea>

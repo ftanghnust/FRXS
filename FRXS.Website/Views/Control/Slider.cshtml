@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Slider";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript">
+    $(function() {
+        $("#slider").slider({
+            mode:"h",
+            width: 500,
+            showTip: true,
+            value:800,
+            rule: [0, '|', 200, '|', 400, '|', 600, '|', 800, '|', 1000],
+            tipFormatter: function (value) {
+                return "￥" + value;
+            },
+            min: 0,
+            max: 1000
+        }); 
+    });
+</script>
+<div style="margin: 60px;float: left">
+    <input class="easyui-slider" value="12"  style="height:300px" data-options="showTip:true,rule:[0,'|',25,'|',50,'|',75,'|',100],mode:'v'" /> 
+    
+</div>
+
+<!-- js创建 -->
+<div  style="margin: 20px;float: left">
+    <div id="slider" />
+</div>
+

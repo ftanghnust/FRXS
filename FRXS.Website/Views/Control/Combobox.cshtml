@@ -1,0 +1,167 @@
+﻿@{
+    ViewBag.Title = "Combobox";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript">
+    $(function () {
+        
+        $.ajax({
+            url: "../Control/GetComboboxData",
+            type: 'post',
+            data: { },
+            success: function (data) {
+                //在第一个Item加上请选择
+                data.unshift({ "UserId": "", "UserName": "-请选择-" });
+                //创建控件
+                $("#combobox").combobox({
+                    data: data,                 //数据源
+                    valueField: "UserId",       //id列
+                    textField: "UserName",      //value列
+                    editable: true,            //是否可以编辑
+                    panelHeight: "atuo",         //下拉层的高度为选项的总高度
+                    width: 140,                  //宽度
+                    onLoadSuccess: function() {
+                        //事件的使用
+                    },
+                    onSelect:function() {
+                        
+                    }
+                });
+            }
+        });
+        
+
+        //创建控件(联动查询)
+        $("#comboboxRemote").combobox({
+            url: "../Control/GetComboboxData",                 //数据源
+            valueField: "UserId",       //id列
+            textField: "UserName",      //value列
+            editable: true,            //是否可以编辑
+            panelHeight: "atuo",         //下拉层的高度为选项的总高度
+            width: 140,                  //宽度
+            mode:"remote"
+        });
+
+        
+    });
+
+</script>
+
+<div style="margin: 20px">
+    <!-- js创建 -->
+    <div id="combobox"></div>
+
+    <!-- js创建 -->
+    <div id="comboboxRemote"></div>
+
+
+    <!-- html创建 -->
+    <select class="easyui-combobox" style="width:200px;">  
+        <option value="aa">aitem1</option>  
+        <option>bitem2</option>  
+        <option>bitem3</option>  
+        <option>ditem4</option>  
+        <option>eitem5</option>  
+    </select> 
+    
+    
+    <!-- grid组合框 -->
+    <select id="cc" class="easyui-combogrid" name="dept" style="width:250px;"  
+            data-options="   
+        panelWidth:450,   
+        value:'',   
+        idField:'code',   
+        textField:'name',   
+        url:'../Control/GetComboboxData',   
+        columns:[[   
+            {field:'UserId',title:'UserId',width:60},   
+            {field:'UserName',title:'UserName',width:100},   
+            {field:'UserTrueName',title:'UserTrueName',width:120},   
+            {field:'Password',title:'Password',width:100}   
+        ]]   
+    "></select>
+</div>
+
+
+<!--程序源码展示-->
+<textarea style="width: 60%; height: 600px; float: left; margin-left: 20px; line-height: 20px; font-size: 13px;">
+    <script type="text/javascript">
+            $(function () {
+
+                $.ajax({
+                    url: "../Control/GetComboboxData",
+                    type: 'post',
+                    data: {},
+                    success: function (data) {
+                        //在第一个Item加上请选择
+                        data.unshift({ "UserId": "", "UserName": "-请选择-" });
+                        //创建控件
+                        $("#combobox").combobox({
+                            data: data,                 //数据源
+                            valueField: "UserId",       //id列
+                            textField: "UserName",      //value列
+                            editable: true,            //是否可以编辑
+                            panelHeight: "atuo",         //下拉层的高度为选项的总高度
+                            width: 140,                  //宽度
+                            onLoadSuccess: function () {
+                                //事件的使用
+                            },
+                            onSelect: function () {
+
+                            }
+                        });
+                    }
+                });
+
+
+                //创建控件(联动查询)
+                $("#comboboxRemote").combobox({
+                    url: "../Control/GetComboboxData",                 //数据源
+                    valueField: "UserId",       //id列
+                    textField: "UserName",      //value列
+                    editable: true,            //是否可以编辑
+                    panelHeight: "atuo",         //下拉层的高度为选项的总高度
+                    width: 140,                  //宽度
+                    mode: "remote"
+                });
+
+
+            });
+
+    </script>
+
+    <div style="margin: 20px">
+        <!-- js创建 -->
+        <div id="combobox"></div>
+
+        <!-- js创建 -->
+        <div id="comboboxRemote"></div>
+
+
+        <!-- html创建 -->
+        <select class="easyui-combobox" style="width:200px;">  
+            <option value="aa">aitem1</option>  
+            <option>bitem2</option>  
+            <option>bitem3</option>  
+            <option>ditem4</option>  
+            <option>eitem5</option>  
+        </select> 
+    
+    
+        <!-- grid组合框 -->
+        <select id="cc" class="easyui-combogrid" name="dept" style="width:250px;"  
+                data-options="   
+            panelWidth:450,   
+            value:'',   
+            idField:'code',   
+            textField:'name',   
+            url:'../Control/GetComboboxData',   
+            columns:[[   
+                {field:'UserId',title:'UserId',width:60},   
+                {field:'UserName',title:'UserName',width:100},   
+                {field:'UserTrueName',title:'UserTrueName',width:120},   
+                {field:'Password',title:'Password',width:100}   
+            ]]   
+        "></select>
+    </div>
+</textarea>

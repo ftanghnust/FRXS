@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FRXS.Website", "FRXS.Website\FRXS.Website.csproj", "{BCA3416C-F43A-4368-A643-B3779731020B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FRXS.Model", "FRXS.Model\FRXS.Model.csproj", "{0D609A11-9496-4330-8250-947D949AE6B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FRXS.Common", "FRXS.Common\FRXS.Common.csproj", "{9613EDE9-F018-45DD-B598-8EFBF4ECF394}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BCA3416C-F43A-4368-A643-B3779731020B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCA3416C-F43A-4368-A643-B3779731020B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCA3416C-F43A-4368-A643-B3779731020B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCA3416C-F43A-4368-A643-B3779731020B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D609A11-9496-4330-8250-947D949AE6B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D609A11-9496-4330-8250-947D949AE6B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D609A11-9496-4330-8250-947D949AE6B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D609A11-9496-4330-8250-947D949AE6B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9613EDE9-F018-45DD-B598-8EFBF4ECF394}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9613EDE9-F018-45DD-B598-8EFBF4ECF394}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9613EDE9-F018-45DD-B598-8EFBF4ECF394}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9613EDE9-F018-45DD-B598-8EFBF4ECF394}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
