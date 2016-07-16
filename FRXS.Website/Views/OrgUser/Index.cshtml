@@ -6,9 +6,9 @@
 <form id="searchForm">
 <fieldset style="margin:0px 0px 2px 0px;display:none;" id="searchPlan">
     <legend>信息查询</legend>
-    UserName：<input type="text" id="txtUserName" />&nbsp;&nbsp;
-    UserTrueName：<input type="text" id="txtUserTrueName" />&nbsp;&nbsp;
-    Password：<input type="text" id="txtPassword" />&nbsp;&nbsp;
+    登录帐号：<input type="text" id="txtUserName" />&nbsp;&nbsp;
+    真实姓名：<input type="text" id="txtUserTrueName" />&nbsp;&nbsp;
+    所属部门：<input type="text" id="txtDept" />&nbsp;&nbsp;
     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-search" onclick="loadgrid()">查询</a>
     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-back" onclick="reset()">清空</a>
 </fieldset>
@@ -21,25 +21,30 @@
     <form id="formAdd">
         <table class="table">
             <tr>
-                <td width="120" align="center">UserName：</td>
+                <th width="120" align="center">登录帐号：</th>
                 <td>
                     <input type="hidden" name="UserId" id="UserId" />
                     <input type="text" class="easyui-validatebox" required="true" name="UserName" id="UserName" />
                 </td>
             </tr>
             <tr>
-                <td align="center">UserTrueName：</td>
+                <th align="center">真实姓名：</th>
                 <td>
                     <input type="text" class="easyui-validatebox" required="true" name="UserTrueName" id="UserTrueName" />
                 </td>
             </tr>
             <tr>
-                <td align="center">Password：</td>
+                <th align="center">所属部门：</th>
+                <td>
+                    <input type="text" class="easyui-validatebox" required="true" name="Dept" id="Dept" />
+                </td>
+            </tr>
+           @* <tr>
+                <th align="center">密码：</th>
                 <td>
                     <input type="text" class="easyui-validatebox" required="true" name="Password" id="Password" />
                 </td>
-            </tr>
-
+            </tr>*@
         </table>
     </form>
 </div>

@@ -13,7 +13,7 @@ $(function () {
 //实现对DataGird控件的绑定操作
 function loadgrid() {
     $('#grid').datagrid({
-        title: '列表',                      //标题
+        title: '用户列表',                      //标题
         iconCls: 'icon-view',               //icon
         methord: 'post',                    //提交方式
         url: '../OrgUser/GetList',          //Aajx地址
@@ -30,32 +30,33 @@ function loadgrid() {
         //设置点击行为单选，点击行中的复选框为多选
         checkOnSelect: true,
         selectOnCheck: true,
-        onClickRow: function(rowIndex) {
+        onClickRow: function (rowIndex) {
             $('#grid').datagrid('unselectAll');
             $('#grid').datagrid('selectRow', rowIndex);
         },
         onClickCell: onClickCell,
-        onLoadSuccess:function () {
+        onLoadSuccess: function () {
             //$('#grid').datagrid('keyCtr');
         },
         queryParams: {
             txtUserName: $("#txtUserName").val(),
             txtUserTrueName: $("#txtUserTrueName").val(),
-            txtPassword: $("#txtPassword").val(),
+            txtDept: $("#txtDept").val()
         },
-        
+
         frozenColumns: [[
             //冻结列
             { field: 'ck', checkbox: true }, //选择
-             { title: 'UserName', field: 'UserName', width: 180, editor: 'text', formatter: frxs.dateFormat },
-            { title: 'UserTrueName', field: 'UserTrueName', width: 180, editor: 'numberbox' }
+            { title: '帐号', field: 'UserName', width: 180 },  //editor: 'text', formatter: frxs.dateFormat
+            { title: '真实姓名', field: 'UserTrueName', width: 180 }
         ]],
         columns: [[
-            { title: 'Password', field: 'Password', width: 180, editor: 'datebox', sortable: true },
-            { title: 'Sex', field: 'Sex', width: 180, editor: 'combobox' },
-            { title: 'Age', field: 'Age', width: 180, editor: 'text' },
-            { title: 'Tel', field: 'Tel', width: 180, editor: 'text' },
-            { title: 'Phone', field: 'Phone', width: 180, editor: 'text' },
+            { title: '所属部门', field: 'Dept', width: 180, sortable: true },
+            //{ title: 'Password', field: 'Password', width: 180, editor: 'datebox', sortable: true },
+            //{ title: 'Sex', field: 'Sex', width: 180, editor: 'combobox' },
+            //{ title: 'Age', field: 'Age', width: 180, editor: 'text' },
+            //{ title: 'Tel', field: 'Tel', width: 180, editor: 'text' },
+            //{ title: 'Phone', field: 'Phone', width: 180, editor: 'text' },
             //{ title: 'Com', field: 'Com', width: 180, editor: 'text' },
             //{ title: 'Address', field: 'Address', width: 180, editor: 'text' },
             //{ title: 'Shen', field: 'Shen', width: 180, editor: 'text' },
@@ -67,7 +68,7 @@ function loadgrid() {
                 title: '操作',
                 align: 'center',
                 width: 200,
-                formatter: function(value, rec) {
+                formatter: function (value, rec) {
                     var str = "";
                     str += "<a class='rowbtn' onclick='edit(" + rec.UserId + ")'>修改</a>";
                     str += "<a class='rowbtn' onclick='del(" + rec.UserId + ")'>删除</a>";
@@ -76,59 +77,63 @@ function loadgrid() {
             }
         ]],
         toolbar: [{
-                text: '添加',
-                iconCls: 'icon-add',
-                handler: add
-            }, '-', {
-                text: '删除',
-                iconCls: 'icon-remove',
-                handler: del
-            }, '-', {
-                text: '查找',
-                iconCls: 'icon-search',
-                handler: search
-            }, '-', {
-                id: 'btnReload',
-                text: '刷新',
-                iconCls: 'icon-reload',
-                handler: function() {
-                    //实现刷新栏目中的数据
-                    $("#grid").datagrid("reload");
-                }
-            }, '-', {
-                id: 'btnReload',
-                text: '插入行',
-                iconCls: 'icon-reload',
-                handler: function () {
-                    var selected = $('#grid').datagrid('getSelected');
-                    var index = $('#grid').datagrid('getRowIndex', selected);
-                    selected.UserName = "UserName";
-                    selected.UserTrueName = "121212121212";
-                    //插入行
-                    $('#grid').datagrid('insertRow', {
-                        row: selected
-                    });
-                }
-            }, '-', {
-                id: 'btnReload',
-                text: '更新行',
-                iconCls: 'icon-reload',
-                handler: function () {
-                    var selected = $('#grid').datagrid('getSelected');
-                    var index = $('#grid').datagrid('getRowIndex', selected);
-                    selected.UserName = "UserName";
-                    selected.UserTrueName = "121212121212";
-                    //更新行
-                    $('#grid').datagrid('updateRow', {
-                        index: index,
-                        row: selected
-                    });
-                }
-            }]
+            text: '添加',
+            iconCls: 'icon-add',
+            handler: add
+        }, '-', {
+            text: '删除',
+            iconCls: 'icon-remove',
+            handler: del
+        }, '-', {
+            text: '查找',
+            iconCls: 'icon-search',
+            handler: search
+        }, '-', {
+            id: 'btnReload',
+            text: '刷新',
+            iconCls: 'icon-reload',
+            handler: function () {
+                //实现刷新栏目中的数据
+                $("#grid").datagrid("reload");
+            }
+        }
+        //,
+        //'-', {
+        //    id: 'btnReload',
+        //    text: '插入行',
+        //    iconCls: 'icon-reload',
+        //    handler: function () {
+        //        var selected = $('#grid').datagrid('getSelected');
+        //        var index = $('#grid').datagrid('getRowIndex', selected);
+        //        selected.UserName = "UserName";
+        //        selected.UserTrueName = "121212121212";
+        //        //插入行
+        //        $('#grid').datagrid('insertRow', {
+        //            row: selected
+        //        });
+        //    }
+        //}, '-', {
+        //    id: 'btnReload',
+        //    text: '更新行',
+        //    iconCls: 'icon-reload',
+        //    handler: function () {
+        //        var selected = $('#grid').datagrid('getSelected');
+        //        var index = $('#grid').datagrid('getRowIndex', selected);
+        //        selected.UserName = "UserName";
+        //        selected.UserTrueName = "121212121212";
+        //        //更新行
+        //        $('#grid').datagrid('updateRow', {
+        //            index: index,
+        //            row: selected
+        //        });
+        //    }
+        //}
+
+        ]
     });
 
-    
-    
+
+
 };
 
 //窗口大小改变
@@ -142,7 +147,7 @@ function gridresize() {
     if ($("#searchPlan").is(":hidden")) {
         h = $(window).height() - 2;
     }
-    $('#grid').datagrid('resize',{
+    $('#grid').datagrid('resize', {
         width: ($(window).width() - 2),
         height: h
     });
@@ -167,17 +172,17 @@ function search() {
 function add() {
     $("#formAdd").form("clear");
     $("#dlgAdd").dialog({
-        title: '添加',
+        title: '用户信息添加',
         iconCls: "icon-add",
         collapsible: true,
         minimizable: true,
         maximizable: true,
         resizable: true,
-        width: $(window).width() * 0.5,
-        height: $(window).height() * 0.5,
+        width: 400,
+        height: 220,
         modal: true,
         onClose: function () {
-            
+
         },
         buttons: [{
             text: '保存',
@@ -207,14 +212,14 @@ function del(id) {
     }
     if (ids != "") {
         //然后确认发送异步请求的信息到后台删除数据
-        $.messager.confirm("提示", "您确认删除？", function(res) {
+        $.messager.confirm("提示", "您确认删除？", function (res) {
             if (res) {
                 $.ajax({
                     url: '../OrgUser/DeletebyIds',
                     type: 'post',
                     data: { ids: ids },
-                    success: function(result) {
-                        if (result=="success") {
+                    success: function (result) {
+                        if (result == "success") {
                             //当删除完成之后清除信息 
                             $("#grid").datagrid("clearSelections");
                             $("#grid").datagrid("reload");
@@ -227,6 +232,7 @@ function del(id) {
         $.messager.alert("提示", "请选择你要删除的数据");
     }
 }
+
 //清空查询表单
 function reset() {
     $("#searchForm").form("clear");
@@ -244,7 +250,7 @@ function save() {
         type: "post",
         data: data,
         success: function (result) {
-            if(result=="success") {
+            if (result == "success") {
                 $.messager.alert("提示", "操作成功", "info", function () {
                     $("#dlgAdd").dialog("close");
                     $("#grid").datagrid("reload");
@@ -257,7 +263,7 @@ function save() {
 //编辑
 function edit(id) {
     $("#formAdd").form("clear");
-    
+
     $.ajax({
         url: "../OrgUser/GetOrgUser",
         type: "post",
@@ -267,25 +273,21 @@ function edit(id) {
             $("#UserId").val(obj.UserId);
             $("#UserName").val(obj.UserName);
             $("#UserTrueName").val(obj.UserTrueName);
+            $("#Dept").val(obj.Dept);
             $("#Password").val(obj.Password);
 
         }
     });
-    
-
-    
-
-
 
     $("#dlgAdd").dialog({
-        title: '编辑',
+        title: '用户信息编辑',
         iconCls: "icon-edit",
         collapsible: true,
         minimizable: true,
         maximizable: true,
         resizable: true,
-        width: $(window).width() * 0.5,
-        height: $(window).height() * 0.5,
+        width: 400,
+        height: 220,
         modal: true,
         onClose: function () {
 
@@ -306,43 +308,34 @@ function edit(id) {
 
 
 
-
-
-
-
-
-
-
-
-
 $.extend($.fn.datagrid.methods, {
     //编辑单元格事件
-    editCell: function(jq,param){
-        return jq.each(function(){
+    editCell: function (jq, param) {
+        return jq.each(function () {
             var opts = $(this).datagrid('options');
-            var fields = $(this).datagrid('getColumnFields',true).concat($(this).datagrid('getColumnFields'));
-            for(var i=0; i<fields.length; i++){
+            var fields = $(this).datagrid('getColumnFields', true).concat($(this).datagrid('getColumnFields'));
+            for (var i = 0; i < fields.length; i++) {
                 var col = $(this).datagrid('getColumnOption', fields[i]);
                 col.editor1 = col.editor;
-                if (fields[i] != param.field){
+                if (fields[i] != param.field) {
                     col.editor = null;
                 }
             }
-            
+
             $(this).datagrid('beginEdit', param.index);
-            
+
             var ed = $(this).datagrid('getEditor', param);
 
             if (ed) {
                 if ($(ed.target).hasClass('textbox-f')) {
                     var obj = $(ed.target).textbox('textbox');
-                    objEvent(obj,ed.field);
+                    objEvent(obj, ed.field);
                 } else {
                     objEvent($(ed.target), ed.field);
                 }
             }
 
-            for(var i=0; i<fields.length; i++){
+            for (var i = 0; i < fields.length; i++) {
                 var col = $(this).datagrid('getColumnOption', fields[i]);
                 col.editor = col.editor1;
             }
@@ -353,7 +346,7 @@ $.extend($.fn.datagrid.methods, {
 var valueinput = "";
 
 //绑定对象事件
-function objEvent(obj,field) {
+function objEvent(obj, field) {
     obj.select();
     valueinput = $(obj).val();
     obj.bind("keydown", function (e) {
@@ -396,7 +389,7 @@ function nextControl() {
             }
         }
     }
-    
+
     var len = $("#grid").datagrid("getRows").length;
     if (len == index) {
         //插入行
@@ -409,7 +402,7 @@ function nextControl() {
     }
 }
 
-		
+
 var editIndex = undefined;
 var editfield = undefined;
 function endEditing() {
@@ -428,9 +421,9 @@ function endEditing() {
 function onClickCell(index, field) {
     editfield = field;
 
-    if (endEditing()){
+    if (endEditing()) {
         $('#grid').datagrid('selectRow', index)
-                .datagrid('editCell', {index:index,field:field});
+                .datagrid('editCell', { index: index, field: field });
         editIndex = index;
     }
 }

@@ -18,15 +18,7 @@ namespace FRXS.Model
         public string UserName { get; set; }
         public string UserTrueName { get; set; }
         public string Password { get; set; }
-        public string Sex { get; set; }
-        public string Age { get; set; }
-        public string Tel { get; set; }
-        public string Phone { get; set; }
-        public string Com { get; set; }
-        public string Address { get; set; }
-        public string Shen { get; set; }
-        public string Shi { get; set; }
-        public string Qu { get; set; }
-        public string Xian { get; set; }
+        public string Dept { get; set; }
+        public string IsManger { get; set; }
     }
 }

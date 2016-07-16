@@ -28,7 +28,7 @@ namespace FRXS.Website.Controllers
             var pageSize = Request["rows"] == null ? 10 : int.Parse(Request["rows"]);
             var userName = Request["txtUserName"];
             var userTrueName = Request["txtUserTrueName"];
-            var password = Request["txtPassword"];
+            var dept = Request["txtDept"];
 
             using (var db = new FRXSEntities())
             {
@@ -42,9 +42,9 @@ namespace FRXS.Website.Controllers
                 {
                     orgUser = orgUser.Where(p => p.UserTrueName.Contains(userTrueName));
                 }
-                if (!string.IsNullOrEmpty(password))
+                if (!string.IsNullOrEmpty(dept))
                 {
-                    orgUser = orgUser.Where(p => p.Password.Contains(password));
+                    orgUser = orgUser.Where(p => p.Dept.Contains(dept));
                 }
 
                 //总数
@@ -82,12 +82,16 @@ namespace FRXS.Website.Controllers
                     {
                         dborgUser.UserName = orgUser.UserName;
                         dborgUser.UserTrueName = orgUser.UserTrueName;
+                        dborgUser.Dept = orgUser.Dept;
                         dborgUser.Password = orgUser.Password;
-
                     }
                 }
                 else
                 {
+                    var dborgUser = db.OrgUser.FirstOrDefault(p => p.UserName == orgUser.UserName);
+                    if (dborgUser != null) {
+                        //return Content(result > 0 ? "success" : "error");
+                    }
                     //添加
                     db.OrgUser.Add(orgUser);
                 }

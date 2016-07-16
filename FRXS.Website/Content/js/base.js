@@ -222,12 +222,12 @@ var _menus = {
                 { "menuid": "24ea7f2f-33c3-4e0d-8faa-7a114e456738", "menuname": "treegrid", "icon": "icon-set", "url": 'control/treegrid' }
             ]
         }
-        //,{
-     //    "menuid": "2", "icon": "icon-set", "menuname": "组织管理",
-     //    "menus": [{ "menuid": "21", "menuname": "角色管理", "icon": "icon-log", "url": '' },
-     //            { "menuid": "22", "menuname": "角色权限", "icon": "icon-database", "url": '' }
-     //    ]
-     //}
+        , {
+            "menuid": "2", "icon": "icon-set", "menuname": "系统管理",
+            "menus": [
+                    { "menuid": "dcfee5be-651e-4aac-8968-ce127e457454", "menuname": "用户管理", "icon": "icon-add", "url": 'orguser/index' },
+            ]
+        }
     ]
 };
 

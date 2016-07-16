@@ -131,7 +131,7 @@
     <Compile Include="Controllers\ControlController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrgUserController.cs" />
-    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\TrafficFeeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -484,11 +484,14 @@
     <Content Include="Content\images\layout-hd-bg.gif" />
     <Content Include="Content\images\noscript.gif" />
     <Content Include="Content\images\tabicons.png" />
+    <Content Include="Content\images\logo-xyzx.jpg" />
     <Content Include="Content\js\base.js" />
     <Content Include="Content\js\frxsCommon.js" />
     <Content Include="Content\js\layout.js" />
     <Content Include="Content\js\orguser.js" />
     <Content Include="Content\js\product.js" />
+    <Content Include="Content\js\trafficfee.js" />
+    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -560,6 +563,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Test.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\TrafficFee\AddOrEdit.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -6,3 +6,7 @@ C:\Users\Administrator\Desktop\FRXS\FRXS.Common\bin\Debug\FRXS.Common.dll
 C:\Users\Administrator\Desktop\FRXS\FRXS.Common\bin\Debug\FRXS.Common.pdb
 C:\Users\Administrator\Desktop\FRXS\FRXS.Common\obj\Debug\FRXS.Common.dll
 C:\Users\Administrator\Desktop\FRXS\FRXS.Common\obj\Debug\FRXS.Common.pdb
+E:\MyWork\FRXS\FRXS.Common\bin\Debug\FRXS.Common.dll
+E:\MyWork\FRXS\FRXS.Common\bin\Debug\FRXS.Common.pdb
+E:\MyWork\FRXS\FRXS.Common\obj\Debug\FRXS.Common.dll
+E:\MyWork\FRXS\FRXS.Common\obj\Debug\FRXS.Common.pdb

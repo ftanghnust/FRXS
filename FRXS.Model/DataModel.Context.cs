@@ -26,6 +26,6 @@ namespace FRXS.Model
         }
     
         public DbSet<OrgUser> OrgUser { get; set; }
-        public DbSet<Product> Product { get; set; }
+        public DbSet<TrafficFee> TrafficFee { get; set; }
     }
 }

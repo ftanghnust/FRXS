@@ -7,7 +7,7 @@
     <Schema Namespace="FRXSModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="FRXSModelStoreContainer">
           <EntitySet Name="OrgUser" EntityType="FRXSModel.Store.OrgUser" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Product" EntityType="FRXSModel.Store.Product" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TrafficFee" EntityType="FRXSModel.Store.TrafficFee" store:Type="Tables" Schema="dbo" />
         </EntityContainer>
         <EntityType Name="OrgUser">
           <Key>
@@ -17,23 +17,27 @@
           <Property Name="UserName" Type="nvarchar" MaxLength="50" />
           <Property Name="UserTrueName" Type="nvarchar" MaxLength="50" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" />
-          <Property Name="Sex" Type="nvarchar" MaxLength="50" />
-          <Property Name="Age" Type="nvarchar" MaxLength="50" />
-          <Property Name="Tel" Type="nvarchar" MaxLength="50" />
-          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
-          <Property Name="Com" Type="nvarchar" MaxLength="50" />
-          <Property Name="Address" Type="nvarchar" MaxLength="50" />
-          <Property Name="Shen" Type="nvarchar" MaxLength="50" />
-          <Property Name="Shi" Type="nvarchar" MaxLength="50" />
-          <Property Name="Qu" Type="nvarchar" MaxLength="50" />
-          <Property Name="Xian" Type="nvarchar" MaxLength="50" />
+          <Property Name="Dept" Type="varchar" MaxLength="50" />
+          <Property Name="IsManger" Type="varchar" MaxLength="2" />
         </EntityType>
-        <EntityType Name="Product">
+        <EntityType Name="TrafficFee">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="ProductName" Type="nvarchar" MaxLength="200" />
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="IDCard" Type="varchar" MaxLength="50" />
+          <Property Name="OutReason" Type="varchar" MaxLength="10" />
+          <Property Name="CollectionNum" Type="varchar" MaxLength="50" />
+          <Property Name="Fee" Type="decimal" />
+          <Property Name="WorkMan" Type="varchar" MaxLength="50" />
+          <Property Name="AccountName" Type="varchar" MaxLength="50" />
+          <Property Name="BankAccount" Type="varchar" MaxLength="50" />
+          <Property Name="BankName" Type="varchar" MaxLength="50" />
+          <Property Name="BZ1" Type="varchar" MaxLength="50" />
+          <Property Name="BZ2" Type="varchar" MaxLength="50" />
+          <Property Name="BZ3" Type="varchar" MaxLength="50" />
+          <Property Name="BZ4" Type="varchar" MaxLength="50" />
         </EntityType>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -41,7 +45,7 @@
       <Schema Namespace="FRXSModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="FRXSEntities" p1:LazyLoadingEnabled="true">
           <EntitySet Name="OrgUser" EntityType="FRXSModel.OrgUser" />
-          <EntitySet Name="Product" EntityType="FRXSModel.Product" />
+          <EntitySet Name="TrafficFee" EntityType="FRXSModel.TrafficFee" />
         </EntityContainer>
         <EntityType Name="OrgUser">
           <Key>
@@ -51,23 +55,27 @@
           <Property Type="String" Name="UserName" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="UserTrueName" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Password" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Sex" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Age" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Tel" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Phone" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Com" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Address" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Shen" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Shi" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Qu" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Xian" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Dept" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="IsManger" MaxLength="2" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="Product">
+        <EntityType Name="TrafficFee">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="ProductName" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="IDCard" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="OutReason" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CollectionNum" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="Fee" Precision="18" Scale="0" />
+          <Property Type="String" Name="WorkMan" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AccountName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BankAccount" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BankName" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BZ1" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BZ2" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BZ3" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BZ4" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -78,16 +86,8 @@
           <EntitySetMapping Name="OrgUser">
             <EntityTypeMapping TypeName="FRXSModel.OrgUser">
               <MappingFragment StoreEntitySet="OrgUser">
-                <ScalarProperty Name="Xian" ColumnName="Xian" />
-                <ScalarProperty Name="Qu" ColumnName="Qu" />
-                <ScalarProperty Name="Shi" ColumnName="Shi" />
-                <ScalarProperty Name="Shen" ColumnName="Shen" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Com" ColumnName="Com" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Tel" ColumnName="Tel" />
-                <ScalarProperty Name="Age" ColumnName="Age" />
-                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="IsManger" ColumnName="IsManger" />
+                <ScalarProperty Name="Dept" ColumnName="Dept" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="UserTrueName" ColumnName="UserTrueName" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
@@ -95,11 +95,23 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Product">
-            <EntityTypeMapping TypeName="FRXSModel.Product">
-              <MappingFragment StoreEntitySet="Product">
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
+          <EntitySetMapping Name="TrafficFee">
+            <EntityTypeMapping TypeName="FRXSModel.TrafficFee">
+              <MappingFragment StoreEntitySet="TrafficFee">
+                <ScalarProperty Name="BZ4" ColumnName="BZ4" />
+                <ScalarProperty Name="BZ3" ColumnName="BZ3" />
+                <ScalarProperty Name="BZ2" ColumnName="BZ2" />
+                <ScalarProperty Name="BZ1" ColumnName="BZ1" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="BankAccount" ColumnName="BankAccount" />
+                <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+                <ScalarProperty Name="WorkMan" ColumnName="WorkMan" />
+                <ScalarProperty Name="Fee" ColumnName="Fee" />
+                <ScalarProperty Name="CollectionNum" ColumnName="CollectionNum" />
+                <ScalarProperty Name="OutReason" ColumnName="OutReason" />
+                <ScalarProperty Name="IDCard" ColumnName="IDCard" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
