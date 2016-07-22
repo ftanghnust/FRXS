@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "AddOrEdit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form id="searchForm">
+    <fieldset style="margin: 0px 0px 2px 0px; display: none;" id="searchPlan">
+        <legend>信息查询</legend>
+        身份证号码：<input type="text" id="txtIDCard" />&nbsp;&nbsp;
+        献血者姓名：<input type="text" id="txtName" />&nbsp;&nbsp;
+    <a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-search" onclick="loadgrid()">查询</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-back" onclick="reset()">清空</a>
+    </fieldset>
+</form>
+<div id="grid"></div>
+
+
+@section scripts
+{
+    <script src="../Content/js/trafficfee.js" type="text/javascript"></script>
+}

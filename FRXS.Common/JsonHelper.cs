@@ -7,7 +7,7 @@ using System.Web.Script.Serialization;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
 
-namespace Frxs.Platform.Utility.Json
+namespace FRXS.Common
 {
     /// <summary>
     /// Json数据转换封装

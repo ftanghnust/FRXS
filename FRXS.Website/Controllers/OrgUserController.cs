@@ -5,19 +5,19 @@ using System.Web;
 using System.Web.Mvc;
 using FRXS.Model;
 using Newtonsoft.Json.Linq;
+using FRXS.Common;
 
 namespace FRXS.Website.Controllers
 {
     public class OrgUserController : Controller
     {
-        //
-        // GET: /OrgUser/
-
+        #region 视图
         public ActionResult Index()
         {
             return View();
         }
-
+        #endregion
+     
         /// <summary>
         /// 获取列表-根据条件
         /// </summary>
@@ -70,40 +70,131 @@ namespace FRXS.Website.Controllers
         /// <returns></returns>
         public ActionResult SaveOrgUser(OrgUser orgUser)
         {
-            int result;
-            using (var db = new FRXSEntities())
+            string result = string.Empty;
+            try
             {
-                //UserId>0更新
-                if (orgUser.UserId > 0)
+                using (var db = new FRXSEntities())
                 {
-                    //获取修改前的实体对象
-                    var dborgUser = db.OrgUser.FirstOrDefault(p => p.UserId == orgUser.UserId);
-                    if (dborgUser != null)
+                    //UserId>0更新
+                    if (orgUser.UserId > 0)
                     {
-                        dborgUser.UserName = orgUser.UserName;
-                        dborgUser.UserTrueName = orgUser.UserTrueName;
-                        dborgUser.Dept = orgUser.Dept;
-                        dborgUser.Password = orgUser.Password;
+                        //获取修改前的实体对象
+                        var dborgUser = db.OrgUser.FirstOrDefault(p => p.UserId == orgUser.UserId);
+                        if (dborgUser != null)
+                        {
+                            dborgUser.UserName = orgUser.UserName;
+                            dborgUser.UserTrueName = orgUser.UserTrueName;
+                            dborgUser.Dept = orgUser.Dept;
+                            dborgUser.ModifyTime = DateTime.Now;
+                        }
                     }
-                }
-                else
-                {
-                    var dborgUser = db.OrgUser.FirstOrDefault(p => p.UserName == orgUser.UserName);
-                    if (dborgUser != null) {
-                        //return Content(result > 0 ? "success" : "error");
+                    else
+                    {
+                        var dborgUser = db.OrgUser.FirstOrDefault(p => p.UserName == orgUser.UserName);
+                        if (dborgUser != null)
+                        {
+                            return Content(new ResultData
+                            {
+                                Flag = "FAIL",
+                                Info = string.Format("数据库中存在登录用户名为【{0}】的记录", orgUser.UserName)
+                            }.ToJsonString());
+
+                        }
+                        orgUser.CreateTime = DateTime.Now;
+                        orgUser.Password = DEncrypt.DEncryptOpt.Md5Stirng("123456");   //默认密码为 123456
+                        //添加
+                        db.OrgUser.Add(orgUser);
                     }
-                    //添加
-                    db.OrgUser.Add(orgUser);
+                    db.SaveChanges();
+
+                    result = new ResultData
+                    {
+                        Flag = "SUCCESS",
+                        Info = "OK"
+                    }.ToJsonString();
                 }
-                result = db.SaveChanges();
             }
-
-            return Content(result > 0 ? "success" : "error");
+            catch (Exception ex)
+            {
+                result = new ResultData
+                {
+                    Flag = "EXCEPTION",
+                    Info = string.Format("出现异常：{0}", ex.Message)
+                }.ToJsonString();
+            }
+            return Content(result);
         }
-
 
         /// <summary>
         /// 删除
+        /// </summary>
+        /// <param name="ids"></param>
+        /// <returns></returns>
+        public ActionResult DeletebyId(string id)
+        {
+            string result = string.Empty;
+            try
+            {
+                using (var db = new FRXSEntities())
+                {
+                    var i = int.Parse(id);
+                    var entity = db.OrgUser.FirstOrDefault(p => p.UserId == i);
+                    if (entity != null)
+                    {
+                        if (entity.UserName == "admin")
+                        {
+                            return Content(new ResultData
+                            {
+                                Flag = "FAIL",
+                                Info = string.Format("不能删除管理员帐号【{0}】", entity.UserName)
+                            }.ToJsonString());
+                        }
+                    }
+                    else
+                    {
+                        return Content(new ResultData
+                        {
+                            Flag = "FAIL",
+                            Info = "数据库中不存在该帐号信息"
+                        }.ToJsonString());
+                    }
+                    db.OrgUser.Remove(entity);
+                    db.SaveChanges();
+
+                    result = new ResultData
+                    {
+                        Flag = "SUCCESS",
+                        Info = "OK"
+                    }.ToJsonString();
+                }
+            }
+            catch (Exception ex)
+            {
+                result = new ResultData
+                {
+                    Flag = "EXCEPTION",
+                    Info = string.Format("出现异常：{0}", ex.Message)
+                }.ToJsonString();
+            }
+            return Content(result);
+        }
+
+        /// <summary>
+        /// 获取单个实体对象
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public ActionResult GetOrgUser(int id)
+        {
+            using (var db = new FRXSEntities())
+            {
+                var entity = db.OrgUser.FirstOrDefault(p => p.UserId == id);
+                return Json(entity, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        /// <summary>
+        /// 删除 批量
         /// </summary>
         /// <param name="ids"></param>
         /// <returns></returns>
@@ -122,21 +213,6 @@ namespace FRXS.Website.Controllers
                 result = db.SaveChanges();
             }
             return Content(result > 0 ? "success" : "error");
-        }
-
-
-        /// <summary>
-        /// 获取单个实体对象
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        public ActionResult GetOrgUser(int id)
-        {
-            using (var db = new FRXSEntities())
-            {
-                var entity = db.OrgUser.FirstOrDefault(p => p.UserId == id);
-                return Json(entity, JsonRequestBehavior.AllowGet);
-            }
         }
 
     }

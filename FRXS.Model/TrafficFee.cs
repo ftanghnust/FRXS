@@ -28,5 +28,8 @@ namespace FRXS.Model
         public string BZ2 { get; set; }
         public string BZ3 { get; set; }
         public string BZ4 { get; set; }
+        public Nullable<System.DateTime> CreateTime { get; set; }
+        public Nullable<System.DateTime> ModifyTime { get; set; }
+        public string IsPass { get; set; }
     }
 }

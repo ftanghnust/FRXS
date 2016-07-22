@@ -4,7 +4,8 @@
     <EntitySetMapping Name="OrgUser">
       <EntityTypeMapping TypeName="FRXSModel.OrgUser">
         <MappingFragment StoreEntitySet="OrgUser">
-          <ScalarProperty Name="IsManger" ColumnName="IsManger" />
+          <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
           <ScalarProperty Name="Dept" ColumnName="Dept" />
           <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="UserTrueName" ColumnName="UserTrueName" />
@@ -16,6 +17,9 @@
     <EntitySetMapping Name="TrafficFee">
       <EntityTypeMapping TypeName="FRXSModel.TrafficFee">
         <MappingFragment StoreEntitySet="TrafficFee">
+          <ScalarProperty Name="IsPass" ColumnName="IsPass" />
+          <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
           <ScalarProperty Name="BZ4" ColumnName="BZ4" />
           <ScalarProperty Name="BZ3" ColumnName="BZ3" />
           <ScalarProperty Name="BZ2" ColumnName="BZ2" />

@@ -13,7 +13,8 @@
     <Property Name="UserTrueName" Type="nvarchar" MaxLength="50" />
     <Property Name="Password" Type="nvarchar" MaxLength="50" />
     <Property Name="Dept" Type="varchar" MaxLength="50" />
-    <Property Name="IsManger" Type="varchar" MaxLength="2" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="ModifyTime" Type="datetime" />
   </EntityType>
   <EntityType Name="TrafficFee">
     <Key>
@@ -29,6 +30,9 @@
     <Property Name="AccountName" Type="varchar" MaxLength="50" />
     <Property Name="BankAccount" Type="varchar" MaxLength="50" />
     <Property Name="BankName" Type="varchar" MaxLength="50" />
+    <Property Name="IsPass" Type="varchar" MaxLength="5" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="ModifyTime" Type="datetime" />
     <Property Name="BZ1" Type="varchar" MaxLength="50" />
     <Property Name="BZ2" Type="varchar" MaxLength="50" />
     <Property Name="BZ3" Type="varchar" MaxLength="50" />

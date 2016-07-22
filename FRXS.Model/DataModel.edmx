@@ -18,7 +18,8 @@
           <Property Name="UserTrueName" Type="nvarchar" MaxLength="50" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" />
           <Property Name="Dept" Type="varchar" MaxLength="50" />
-          <Property Name="IsManger" Type="varchar" MaxLength="2" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="ModifyTime" Type="datetime" />
         </EntityType>
         <EntityType Name="TrafficFee">
           <Key>
@@ -34,6 +35,9 @@
           <Property Name="AccountName" Type="varchar" MaxLength="50" />
           <Property Name="BankAccount" Type="varchar" MaxLength="50" />
           <Property Name="BankName" Type="varchar" MaxLength="50" />
+          <Property Name="IsPass" Type="varchar" MaxLength="5" />
+          <Property Name="CreateTime" Type="datetime" />
+          <Property Name="ModifyTime" Type="datetime" />
           <Property Name="BZ1" Type="varchar" MaxLength="50" />
           <Property Name="BZ2" Type="varchar" MaxLength="50" />
           <Property Name="BZ3" Type="varchar" MaxLength="50" />
@@ -56,7 +60,8 @@
           <Property Type="String" Name="UserTrueName" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Password" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Dept" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="IsManger" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CreateTime" Precision="3" />
+          <Property Type="DateTime" Name="ModifyTime" Precision="3" />
         </EntityType>
         <EntityType Name="TrafficFee">
           <Key>
@@ -76,6 +81,9 @@
           <Property Type="String" Name="BZ2" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="BZ3" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="BZ4" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CreateTime" Precision="3" />
+          <Property Type="DateTime" Name="ModifyTime" Precision="3" />
+          <Property Type="String" Name="IsPass" MaxLength="5" FixedLength="false" Unicode="false" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -86,7 +94,8 @@
           <EntitySetMapping Name="OrgUser">
             <EntityTypeMapping TypeName="FRXSModel.OrgUser">
               <MappingFragment StoreEntitySet="OrgUser">
-                <ScalarProperty Name="IsManger" ColumnName="IsManger" />
+                <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
                 <ScalarProperty Name="Dept" ColumnName="Dept" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="UserTrueName" ColumnName="UserTrueName" />
@@ -98,6 +107,9 @@
           <EntitySetMapping Name="TrafficFee">
             <EntityTypeMapping TypeName="FRXSModel.TrafficFee">
               <MappingFragment StoreEntitySet="TrafficFee">
+                <ScalarProperty Name="IsPass" ColumnName="IsPass" />
+                <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
                 <ScalarProperty Name="BZ4" ColumnName="BZ4" />
                 <ScalarProperty Name="BZ3" ColumnName="BZ3" />
                 <ScalarProperty Name="BZ2" ColumnName="BZ2" />

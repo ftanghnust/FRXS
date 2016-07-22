@@ -13,7 +13,8 @@
     <Property Type="String" Name="UserTrueName" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="Password" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="Dept" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Type="String" Name="IsManger" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="CreateTime" Precision="3" />
+    <Property Type="DateTime" Name="ModifyTime" Precision="3" />
   </EntityType>
   <EntityType Name="TrafficFee">
     <Key>
@@ -33,5 +34,8 @@
     <Property Type="String" Name="BZ2" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="BZ3" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="BZ4" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="CreateTime" Precision="3" />
+    <Property Type="DateTime" Name="ModifyTime" Precision="3" />
+    <Property Type="String" Name="IsPass" MaxLength="5" FixedLength="false" Unicode="false" />
   </EntityType>
 </Schema>

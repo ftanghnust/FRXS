@@ -49,7 +49,7 @@ namespace FRXS.Common
                 cookie = new HttpCookie(strName);
             }
             cookie.Value = strValue;
-            cookie.Expires = DateTime.Now.AddMinutes(20);
+            cookie.Expires = DateTime.Now.AddMinutes(120);
             HttpContext.Current.Response.AppendCookie(cookie);
         }
 

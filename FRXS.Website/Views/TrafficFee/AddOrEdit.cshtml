@@ -2,20 +2,84 @@
     ViewBag.Title = "AddOrEdit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link href="~/Content/css/jquery.autocomplete.css" rel="stylesheet" />
+<style>
+    .table th {
+        text-align: right;
+    }
+</style>
 
-<form id="searchForm">
-<fieldset style="margin:0px 0px 2px 0px;display:none;" id="searchPlan">
-    <legend>信息查询</legend>
-    UserName：<input type="text" id="txtUserName" />&nbsp;&nbsp;
-    UserTrueName：<input type="text" id="txtUserTrueName" />&nbsp;&nbsp;
-    Password：<input type="text" id="txtPassword" />&nbsp;&nbsp;
-    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-search" onclick="loadgrid()">查询</a>
-    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-back" onclick="reset()">清空</a>
-</fieldset>
-</form>
-<div id="grid"></div>
+<div id="dlgAdd">
+    <form id="formAdd" autocomplete="off">
+        <table class="table">
+            <tr>
+                <th style="width: 125px">身份证号码：</th>
+                <td>
+                    <input type="hidden" name="ID" id="ID" />
+                    <input type="text" class="easyui-validatebox" style="width: 170px;" data-options="required:'true',missingMessage:'请输入身份证号码',validType:'idcared'" name="IDCard" id="IDCard" />
+                </td>
+            </tr>
+            <tr>
+                <th>献血者姓名：</th>
+                <td>
+                    <input type="text" class="easyui-validatebox" style="width: 170px;" data-options="required:'true',missingMessage:'请输入献血者姓名'" name="Name" id="Name" />
+                </td>
+            </tr>
+            <tr>
+                <th>户名：</th>
+                <td>
+                    <input type="text" class="easyui-validatebox" style="width: 170px;" data-options="required:'true',missingMessage:'请输入户名'" id="AccountName" name="AccountName">
+            </tr>
+            <tr>
+                <th>银行帐号：</th>
+                <td>
+                    <input type="text" class="easyui-validatebox" style="width: 170px;" data-options="required:'true',missingMessage:'请输入银行卡号',validType:'bankIdCard'" id="BankAccount" name="BankAccount">
+                </td>
+            </tr>
+            <tr>
+                <th>开户行：</th>
+                <td>
+                    <input type="text" class="easyui-validatebox" style="width: 170px;" data-options="required:'true',missingMessage:'请输入开户行'" id="BankName" name="BankName">
+                </td>
+            </tr>
+            <tr>
+                <th>是否通过：</th>
+                <td>
+                    <input type="radio" name="IsPass" value="是">是&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="IsPass" value="否">否
+                </td>
+            </tr>
+            <tr id="trOutReason">
+                <th>淘汰方式：</th>
+                <td>
+                    <input type="radio" name="OutReason" value="体检">体检
+                    <input type="radio" name="OutReason" value="采集">采集
+                </td>
+            </tr>
+            <tr id="trCollectionNum">
+                <th>采集血量：</th>
+                <td>
+                    <select class="easyui-combobox" name="CollectionNum" id="CollectionNum" style="width: 100%;" data-options="missingMessage:'请选择采集血量',panelHeight:'auto',onSelect:collectionNumOnSelect">
+                        <option value="0.5-1U">0.5-1U</option>
+                        <option value="1.5U">1.5U</option>
+                        <option value="2U">2U</option>
+                    </select>
+                </td>
+            </tr>
+            <tr id="trFee">
+                <th>应付金额（元）：</th>
+                <td>
+                    <input type="text" class="easyui-numberbox" style="width: 170px;" id="Fee" name="Fee" data-options="min:0,precision:2,required:'true',missingMessage:'请输入应付金额'">
+                </td>
+            </tr>
+
+        </table>
+    </form>
+</div>
+
 
 @section scripts
 {
-    <script src="../Content/js/trafficfee.js" type="text/javascript"></script>
+    <script src="../Content/js/jquery.autocomplete.min.js"></script>
+    <script src="../Content/js/trafficfeeAddOrEdit.js"></script>
 }

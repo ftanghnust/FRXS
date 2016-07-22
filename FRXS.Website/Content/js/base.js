@@ -7,7 +7,7 @@ $(function () {
     $('#tabs').tabs('add', {
         title: '欢迎',
         //content: createFrame('muster/welcome')
-        content: '<H1>WELCOME</H1>'
+        content: '<H1>欢迎您登录【兴盛社区网络服务股份有限公司系统门户】</H1>'
     });
 
     atuoTheme();
@@ -209,17 +209,18 @@ var _menus = {
             "icon": "icon-role",
             "menuname": "机采交通费",
             "menus": [
-                { "menuid": "dcfee5be-651e-4aac-8968-ce127e457454", "menuname": "新增", "icon": "icon-add", "url": 'orguser/index' },
-                { "menuid": "24ea7f2f-33c3-4e0d-8faa-7a114e4567b1", "menuname": "查询", "icon": "icon-search", "url": 'control/accordion' },
-                { "menuid": "24ea7f2f-33c3-4e0d-8faa-7a114e4567b2", "menuname": "combobox", "icon": "icon-set", "url": 'control/combobox' },
-                { "menuid": "24ea7f2f-33c3-4e0d-8faa-7a114e4567b3", "menuname": "dialog", "icon": "icon-set", "url": 'control/dialog' },
-                { "menuid": "24ea7f2f-33c3-4e0d-8faa-7a114e4567b4", "menuname": "messager", "icon": "icon-set", "url": 'control/messager' },
-                { "menuid": "24ea7f2f-33c3-4e0d-8faa-7a114e4567b5", "menuname": "tree", "icon": "icon-set", "url": 'control/tree' },
-                { "menuid": "24ea7f2f-33c3-4e0d-8faa-7a114e4567b6", "menuname": "combotree", "icon": "icon-set", "url": 'control/combotree' },
-                { "menuid": "24ea7f2f-33c3-4e0d-8faa-7a114e4567b8", "menuname": "slider", "icon": "icon-set", "url": 'control/slider' },
-                { "menuid": "24ea7f2f-33c3-4e0d-8faa-7a114e456718", "menuname": "tabs", "icon": "icon-set", "url": 'control/tabs' },
-                { "menuid": "24ea7f2f-33c3-4e0d-8faa-7a114e456728", "menuname": "input", "icon": "icon-set", "url": 'control/input' },
-                { "menuid": "24ea7f2f-33c3-4e0d-8faa-7a114e456738", "menuname": "treegrid", "icon": "icon-set", "url": 'control/treegrid' }
+                { "menuid": "dcfee5be-651e-4aac-8968-ce127e457454", "menuname": "新增", "icon": "icon-add", "url": 'TrafficFee/Index' },
+                { "menuid": "24ea7f2f-33c3-4e0d-8faa-7a114e4567b1", "menuname": "查询", "icon": "icon-search", "url": 'TrafficFee/Query' },
+                //{ "menuid": "24ea7f2f-33c3-4e0d-8faa-7a114e4567b1", "menuname": "查询", "icon": "icon-search", "url": 'control/accordion' },
+                //{ "menuid": "24ea7f2f-33c3-4e0d-8faa-7a114e4567b2", "menuname": "combobox", "icon": "icon-set", "url": 'control/combobox' },
+                //{ "menuid": "24ea7f2f-33c3-4e0d-8faa-7a114e4567b3", "menuname": "dialog", "icon": "icon-set", "url": 'control/dialog' },
+                //{ "menuid": "24ea7f2f-33c3-4e0d-8faa-7a114e4567b4", "menuname": "messager", "icon": "icon-set", "url": 'control/messager' },
+                //{ "menuid": "24ea7f2f-33c3-4e0d-8faa-7a114e4567b5", "menuname": "tree", "icon": "icon-set", "url": 'control/tree' },
+                //{ "menuid": "24ea7f2f-33c3-4e0d-8faa-7a114e4567b6", "menuname": "combotree", "icon": "icon-set", "url": 'control/combotree' },
+                //{ "menuid": "24ea7f2f-33c3-4e0d-8faa-7a114e4567b8", "menuname": "slider", "icon": "icon-set", "url": 'control/slider' },
+                //{ "menuid": "24ea7f2f-33c3-4e0d-8faa-7a114e456718", "menuname": "tabs", "icon": "icon-set", "url": 'control/tabs' },
+                //{ "menuid": "24ea7f2f-33c3-4e0d-8faa-7a114e456728", "menuname": "input", "icon": "icon-set", "url": 'control/input' },
+                //{ "menuid": "24ea7f2f-33c3-4e0d-8faa-7a114e456738", "menuname": "treegrid", "icon": "icon-set", "url": 'control/treegrid' }
             ]
         }
         , {

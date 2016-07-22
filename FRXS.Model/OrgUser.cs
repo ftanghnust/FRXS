@@ -19,6 +19,7 @@ namespace FRXS.Model
         public string UserTrueName { get; set; }
         public string Password { get; set; }
         public string Dept { get; set; }
-        public string IsManger { get; set; }
+        public Nullable<System.DateTime> CreateTime { get; set; }
+        public Nullable<System.DateTime> ModifyTime { get; set; }
     }
 }

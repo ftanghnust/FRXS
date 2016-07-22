@@ -138,7 +138,34 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\css\indicator.gif" />
+    <Content Include="Content\css\jquery.autocomplete.css" />
     <Content Include="Content\css\login.css" />
+    <Content Include="Content\datepicker\calendar.js" />
+    <Content Include="Content\datepicker\config.js" />
+    <Content Include="Content\datepicker\lang\en.js" />
+    <Content Include="Content\datepicker\lang\zh-cn.js" />
+    <Content Include="Content\datepicker\lang\zh-tw.js" />
+    <Content Include="Content\datepicker\My97DatePicker.htm" />
+    <Content Include="Content\datepicker\skin\datePicker.gif" />
+    <Content Include="Content\datepicker\skin\default\datepicker.css" />
+    <Content Include="Content\datepicker\skin\default\img.gif" />
+    <Content Include="Content\datepicker\skin\WdatePicker.css" />
+    <Content Include="Content\datepicker\skin\whyGreen\bg.jpg" />
+    <Content Include="Content\datepicker\skin\whyGreen\datepicker.css" />
+    <Content Include="Content\datepicker\skin\whyGreen\img.gif" />
+    <Content Include="Content\datepicker\WdatePicker.js" />
+    <Content Include="Content\datepicker\开发包\lang\en.js" />
+    <Content Include="Content\datepicker\开发包\lang\zh-cn.js" />
+    <Content Include="Content\datepicker\开发包\lang\zh-tw.js" />
+    <Content Include="Content\datepicker\开发包\readme.txt" />
+    <Content Include="Content\datepicker\开发包\skin\datePicker.gif" />
+    <Content Include="Content\datepicker\开发包\skin\default\datepicker.css" />
+    <Content Include="Content\datepicker\开发包\skin\default\img.gif" />
+    <Content Include="Content\datepicker\开发包\skin\WdatePicker.css" />
+    <Content Include="Content\datepicker\开发包\skin\whyGreen\bg.jpg" />
+    <Content Include="Content\datepicker\开发包\skin\whyGreen\datepicker.css" />
+    <Content Include="Content\datepicker\开发包\skin\whyGreen\img.gif" />
     <Content Include="Content\easyui-1.4.3\easyloader.js" />
     <Content Include="Content\easyui-1.4.3\jquery-1.7.1.js" />
     <Content Include="Content\easyui-1.4.3\jquery.cookie.js" />
@@ -487,10 +514,12 @@
     <Content Include="Content\images\logo-xyzx.jpg" />
     <Content Include="Content\js\base.js" />
     <Content Include="Content\js\frxsCommon.js" />
+    <Content Include="Content\js\jquery.autocomplete.min.js" />
     <Content Include="Content\js\layout.js" />
     <Content Include="Content\js\orguser.js" />
-    <Content Include="Content\js\product.js" />
     <Content Include="Content\js\trafficfee.js" />
+    <Content Include="Content\js\trafficfeeAddOrEdit.js" />
+    <Content Include="Content\js\trafficfeeQuery.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
@@ -526,10 +555,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\OrgUser\Index.cshtml" />
-    <Content Include="Views\Product\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Product\Test.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Control\Accordion.cshtml" />
@@ -565,7 +590,16 @@
     <Content Include="Views\Home\Test.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Views\TrafficFee\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Views\TrafficFee\AddOrEdit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\TrafficFee\Query.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\datepicker\My97_DatePicke_API.docx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

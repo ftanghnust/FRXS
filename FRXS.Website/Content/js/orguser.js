@@ -34,7 +34,7 @@ function loadgrid() {
             $('#grid').datagrid('unselectAll');
             $('#grid').datagrid('selectRow', rowIndex);
         },
-        onClickCell: onClickCell,
+        //onClickCell: onClickCell,
         onLoadSuccess: function () {
             //$('#grid').datagrid('keyCtr');
         },
@@ -69,10 +69,12 @@ function loadgrid() {
                 align: 'center',
                 width: 200,
                 formatter: function (value, rec) {
-                    var str = "";
-                    str += "<a class='rowbtn' onclick='edit(" + rec.UserId + ")'>修改</a>";
-                    str += "<a class='rowbtn' onclick='del(" + rec.UserId + ")'>删除</a>";
-                    return str;
+                    if (rec.UserName != "admin") {
+                        var str = "";
+                        str += "<a class='rowbtn' onclick='edit(" + rec.UserId + ")'>修改</a>";
+                        str += "<a class='rowbtn' onclick='del(" + rec.UserId + ")'>删除</a>";
+                        return str;
+                    }
                 }
             }
         ]],
@@ -80,11 +82,13 @@ function loadgrid() {
             text: '添加',
             iconCls: 'icon-add',
             handler: add
-        }, '-', {
-            text: '删除',
-            iconCls: 'icon-remove',
-            handler: del
-        }, '-', {
+        }
+        //, '-', {
+        //    text: '删除',
+        //    iconCls: 'icon-remove',
+        //    handler: del
+        //}
+        , '-', {
             text: '查找',
             iconCls: 'icon-search',
             handler: search
@@ -200,29 +204,26 @@ function add() {
 
 //删除
 function del(id) {
-    var ids = "";
-    if (!isNaN(id)) {
-        ids = id;
-    } else {
+    if (id != "") {
         var rows = $("#grid").datagrid("getSelections");
-        for (var i = 0; i < rows.length; i++) {
-            ids += rows[i].UserId + ",";
-        }
-        ids = ids.substring(0, ids.length - 1);
-    }
-    if (ids != "") {
+        var username = rows[0].UserName;
         //然后确认发送异步请求的信息到后台删除数据
-        $.messager.confirm("提示", "您确认删除？", function (res) {
+        $.messager.confirm("提示", "您确认删除帐号【" + username + "】？", function (res) {
             if (res) {
                 $.ajax({
-                    url: '../OrgUser/DeletebyIds',
+                    url: '../OrgUser/DeletebyId',
                     type: 'post',
-                    data: { ids: ids },
+                    data: { id: id },
+                    dataType: "json",
                     success: function (result) {
-                        if (result == "success") {
-                            //当删除完成之后清除信息 
-                            $("#grid").datagrid("clearSelections");
-                            $("#grid").datagrid("reload");
+                        if (result != undefined && result.Info != undefined) {
+                            if (result.Flag == "SUCCESS") {
+                                //当删除完成之后清除信息 
+                                $("#grid").datagrid("clearSelections");
+                                $("#grid").datagrid("reload");
+                            } else {
+                                $.messager.alert("提示", result.Info, "info");
+                            }
                         }
                     }
                 });
@@ -232,6 +233,42 @@ function del(id) {
         $.messager.alert("提示", "请选择你要删除的数据");
     }
 }
+
+
+//删除
+//function del(id) {
+//    var ids = "";
+//    if (!isNaN(id)) {
+//        ids = id;
+//    } else {
+//        var rows = $("#grid").datagrid("getSelections");
+//        for (var i = 0; i < rows.length; i++) {
+//            ids += rows[i].UserId + ",";
+//        }
+//        ids = ids.substring(0, ids.length - 1);
+//    }
+//    if (ids != "") {
+//        //然后确认发送异步请求的信息到后台删除数据
+//        $.messager.confirm("提示", "您确认删除？", function (res) {
+//            if (res) {
+//                $.ajax({
+//                    url: '../OrgUser/DeletebyIds',
+//                    type: 'post',
+//                    data: { ids: ids },
+//                    success: function (result) {
+//                        if (result == "success") {
+//                            //当删除完成之后清除信息 
+//                            $("#grid").datagrid("clearSelections");
+//                            $("#grid").datagrid("reload");
+//                        }
+//                    }
+//                });
+//            }
+//        });
+//    } else {
+//        $.messager.alert("提示", "请选择你要删除的数据");
+//    }
+//}
 
 //清空查询表单
 function reset() {
@@ -249,12 +286,17 @@ function save() {
         url: "../OrgUser/SaveOrgUser",
         type: "post",
         data: data,
+        dataType: "json",
         success: function (result) {
-            if (result == "success") {
-                $.messager.alert("提示", "操作成功", "info", function () {
-                    $("#dlgAdd").dialog("close");
-                    $("#grid").datagrid("reload");
-                });
+            if (result != undefined && result.Info != undefined) {
+                if (result.Flag == "SUCCESS") {
+                    $.messager.alert("提示", "操作成功", "info", function () {
+                        $("#dlgAdd").dialog("close");
+                        $("#grid").datagrid("reload");
+                    });
+                } else {
+                    $.messager.alert("提示", result.Info, "info");
+                }
             }
         }
     });
@@ -274,8 +316,7 @@ function edit(id) {
             $("#UserName").val(obj.UserName);
             $("#UserTrueName").val(obj.UserTrueName);
             $("#Dept").val(obj.Dept);
-            $("#Password").val(obj.Password);
-
+            //$("#Password").val(obj.Password);
         }
     });
 

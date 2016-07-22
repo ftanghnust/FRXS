@@ -11,6 +11,7 @@ namespace FRXS.Website.Controllers
 {
     public class HomeController : Controller
     {
+        #region 视图
         /// <summary>
         /// 首页
         /// </summary>
@@ -22,7 +23,7 @@ namespace FRXS.Website.Controllers
             using (var db = new FRXSEntities())
             {
                 var user = db.OrgUser.FirstOrDefault(p => p.UserName == userName);
-                if(user!=null)
+                if (user != null)
                 {
                     ViewBag.UserName = user.UserName;
                     ViewBag.UserTrueName = user.UserTrueName;
@@ -31,8 +32,6 @@ namespace FRXS.Website.Controllers
 
             return View();
         }
-
-
 
         /// <summary>
         /// 测试
@@ -43,7 +42,6 @@ namespace FRXS.Website.Controllers
             return View();
         }
 
-
         /// <summary>
         /// 登录页
         /// </summary>
@@ -53,7 +51,8 @@ namespace FRXS.Website.Controllers
         {
             return View();
         }
-
+        #endregion
+      
         /// <summary>
         /// 登录提交
         /// </summary>
