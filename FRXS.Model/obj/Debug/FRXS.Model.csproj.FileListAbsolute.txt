@@ -23,4 +23,3 @@ E:\MyWork\FRXS\FRXS.Model\bin\Debug\EntityFramework.xml
 E:\MyWork\FRXS\FRXS.Model\bin\Debug\zh-Hans\EntityFramework.resources.dll
 E:\MyWork\FRXS\FRXS.Model\obj\Debug\FRXS.Model.dll
 E:\MyWork\FRXS\FRXS.Model\obj\Debug\FRXS.Model.pdb
-E:\MyWork\FRXS\FRXS.Model\obj\Debug\FRXS.Model.csprojResolveAssemblyReference.cache

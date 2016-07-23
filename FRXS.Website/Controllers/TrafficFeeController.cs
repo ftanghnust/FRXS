@@ -36,6 +36,8 @@ namespace FRXS.Website.Controllers
         {
             var pageIndex = Request["page"] == null ? 1 : int.Parse(Request["page"]);
             var pageSize = Request["rows"] == null ? 10 : int.Parse(Request["rows"]);
+            var sort = Request["sort"];
+            var order = Request["order"];
             var name = Request["txtName"];
             var idCard = Request["txtIDCard"];
             var outReason = Request["OutReason"];
@@ -77,11 +79,27 @@ namespace FRXS.Website.Controllers
                     trafficFee = trafficFee.Where(p => p.CreateTime < EndDate);
                 }
 
-
                 //总数
                 var sum = trafficFee.Count();
+
                 //排序及分页
-                trafficFee = trafficFee.OrderByDescending(p => p.CreateTime).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+                if (sort == "CreateTime" && order == "desc")
+                {
+                    trafficFee = trafficFee.OrderByDescending(p => p.CreateTime).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+                }
+                else if (sort == "CreateTime" && order == "asc")
+                {
+                    trafficFee = trafficFee.OrderBy(p => p.CreateTime).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+                }
+                else if (sort == "IDCard" && order == "desc")
+                {
+                    trafficFee = trafficFee.OrderByDescending(p => p.IDCard).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+                }
+                else if (sort == "IDCard" && order == "asc")
+                {
+                    trafficFee = trafficFee.OrderBy(p => p.IDCard).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+                }
+               
 
                 var data = new
                 {
@@ -236,6 +254,8 @@ namespace FRXS.Website.Controllers
                 return Content(result.ToJsonString());
             }
         }
+
+
 
     }
 }

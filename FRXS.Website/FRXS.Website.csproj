@@ -520,6 +520,7 @@
     <Content Include="Content\js\trafficfee.js" />
     <Content Include="Content\js\trafficfeeAddOrEdit.js" />
     <Content Include="Content\js\trafficfeeQuery.js" />
+    <Content Include="Content\js\updatePwd.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
@@ -600,6 +601,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\datepicker\My97_DatePicke_API.docx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\OrgUser\UpdatePWD.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

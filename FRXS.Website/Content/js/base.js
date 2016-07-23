@@ -7,7 +7,7 @@ $(function () {
     $('#tabs').tabs('add', {
         title: '欢迎',
         //content: createFrame('muster/welcome')
-        content: '<H1>欢迎您登录【兴盛社区网络服务股份有限公司系统门户】</H1>'
+        content: '<H1>欢迎您登录【长沙血液中心机采交通费发放系统】</H1>'
     });
 
     atuoTheme();
@@ -237,5 +237,29 @@ function loginOut() {
         if (res) {
             location.href = 'Home/Logout';
         }
+    });
+}
+
+function updatePWD() {
+    var thisdlg = frxs.dialog({
+        title: "修改密码",
+        url: "../OrgUser/UpdatePWD",
+        owdoc: window.top,
+        width: 425,
+        height: 300,
+        buttons: [{
+            id: 'btnOk',
+            text: '提交',
+            iconCls: 'icon-ok',
+            handler: function () {
+                thisdlg.subpage.saveData();
+            }
+        }, {
+            text: '关闭',
+            iconCls: 'icon-cancel',
+            handler: function () {
+                thisdlg.dialog("close");
+            }
+        }]
     });
 }

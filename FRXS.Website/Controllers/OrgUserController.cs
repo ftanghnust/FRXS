@@ -16,8 +16,14 @@ namespace FRXS.Website.Controllers
         {
             return View();
         }
+
+        public ActionResult UpdatePWD()
+        {
+            return View();
+        }
+
         #endregion
-     
+
         /// <summary>
         /// 获取列表-根据条件
         /// </summary>
@@ -213,6 +219,63 @@ namespace FRXS.Website.Controllers
                 result = db.SaveChanges();
             }
             return Content(result > 0 ? "success" : "error");
+        }
+
+        /// <summary>
+        /// 更新帐号密码
+        /// </summary>
+        /// <param name="OldPwd"></param>
+        /// <param name="NewPwd"></param>
+        /// <param name="NewPwd1"></param>
+        /// <returns></returns>
+        public ActionResult UpdatePwdHandle(string OldPwd, string NewPwd, string NewPwd1)
+        {
+            if (NewPwd != NewPwd1)
+            {
+                return Content(new ResultData
+                {
+                    Flag = "FAIL",
+                    Info = "两次输入的密码不一致"
+                }.ToJsonString());
+            }
+            string result = string.Empty;
+            try
+            {
+                var userName = CookieHelper.Cookie.GetCookie(CookieHelper.LoginCookieName);
+                using (var db = new FRXSEntities())
+                {
+                    var user = db.OrgUser.FirstOrDefault(p => p.UserName == userName.Trim());
+                    if (user != null && user.Password == DEncrypt.DEncryptOpt.Md5Stirng(OldPwd.Trim()))
+                    {
+
+                        user.Password = DEncrypt.DEncryptOpt.Md5Stirng(NewPwd.Trim());
+
+                        db.SaveChanges();
+
+                        result = new ResultData
+                        {
+                            Flag = "SUCCESS",
+                            Info = "OK"
+                        }.ToJsonString();
+                    }
+                    else {
+                        result = new ResultData
+                        {
+                            Flag = "FAIL",
+                            Info = "原始密码错误"
+                        }.ToJsonString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                result = new ResultData
+                {
+                    Flag = "EXCEPTION",
+                    Info = string.Format("出现异常：{0}", ex.Message)
+                }.ToJsonString();
+            }
+            return Content(result);
         }
 
     }
