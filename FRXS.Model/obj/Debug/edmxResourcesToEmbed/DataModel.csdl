@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="FRXSModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="FRXSModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
   <EntityContainer Name="FRXSEntities" p1:LazyLoadingEnabled="true">
     <EntitySet Name="OrgUser" EntityType="FRXSModel.OrgUser" />
     <EntitySet Name="TrafficFee" EntityType="FRXSModel.TrafficFee" />
@@ -8,7 +8,7 @@
     <Key>
       <PropertyRef Name="UserId" />
     </Key>
-    <Property Type="Int32" Name="UserId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="UserId" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="String" Name="UserName" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="UserTrueName" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Type="String" Name="Password" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -20,7 +20,7 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
     <Property Type="String" Name="Name" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="IDCard" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Type="String" Name="OutReason" MaxLength="10" FixedLength="false" Unicode="false" />

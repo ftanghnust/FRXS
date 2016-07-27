@@ -141,7 +141,7 @@ function saveData() {
     $(this).attr("disabled", "disabled");
     var validate = $("#formAdd").form('validate');
     if (!validate) {
-        window.top.$.messager.alert("提示", "数据没有填写完整，请检查！", "info");
+        //window.top.$.messager.alert("提示", "数据没有填写完整，请检查！", "info");
         return false;
     }
     var isPass = $('input[name="IsPass"]').filter(':checked').val();

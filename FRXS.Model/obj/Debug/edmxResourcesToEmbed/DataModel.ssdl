@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="FRXSModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="FRXSModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
   <EntityContainer Name="FRXSModelStoreContainer">
-    <EntitySet Name="OrgUser" EntityType="FRXSModel.Store.OrgUser" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="TrafficFee" EntityType="FRXSModel.Store.TrafficFee" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OrgUser" EntityType="FRXSModel.Store.OrgUser" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="TrafficFee" EntityType="FRXSModel.Store.TrafficFee" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
   </EntityContainer>
   <EntityType Name="OrgUser">
     <Key>

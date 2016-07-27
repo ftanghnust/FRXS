@@ -99,7 +99,9 @@ E:\MyWork\FRXS\FRXS.Website\bin\FRXS.Model.dll
 E:\MyWork\FRXS\FRXS.Website\bin\Microsoft.Web.Infrastructure.dll
 E:\MyWork\FRXS\FRXS.Website\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
 E:\MyWork\FRXS\FRXS.Website\bin\Newtonsoft.Json.dll
+E:\MyWork\FRXS\FRXS.Website\bin\System.Net.Http.dll
 E:\MyWork\FRXS\FRXS.Website\bin\System.Net.Http.Formatting.dll
+E:\MyWork\FRXS\FRXS.Website\bin\System.Net.Http.WebRequest.dll
 E:\MyWork\FRXS\FRXS.Website\bin\System.Web.Http.dll
 E:\MyWork\FRXS\FRXS.Website\bin\System.Web.Http.WebHost.dll
 E:\MyWork\FRXS\FRXS.Website\bin\System.Web.Mvc.dll
@@ -114,7 +116,9 @@ E:\MyWork\FRXS\FRXS.Website\bin\FRXS.Common.pdb
 E:\MyWork\FRXS\FRXS.Website\bin\FRXS.Model.pdb
 E:\MyWork\FRXS\FRXS.Website\bin\EntityFramework.xml
 E:\MyWork\FRXS\FRXS.Website\bin\Newtonsoft.Json.xml
+E:\MyWork\FRXS\FRXS.Website\bin\System.Net.Http.xml
 E:\MyWork\FRXS\FRXS.Website\bin\System.Net.Http.Formatting.xml
+E:\MyWork\FRXS\FRXS.Website\bin\System.Net.Http.WebRequest.xml
 E:\MyWork\FRXS\FRXS.Website\bin\System.Web.Http.xml
 E:\MyWork\FRXS\FRXS.Website\bin\System.Web.Http.WebHost.xml
 E:\MyWork\FRXS\FRXS.Website\bin\System.Web.Mvc.xml
@@ -123,7 +127,9 @@ E:\MyWork\FRXS\FRXS.Website\bin\System.Web.WebPages.xml
 E:\MyWork\FRXS\FRXS.Website\bin\System.Web.WebPages.Deployment.xml
 E:\MyWork\FRXS\FRXS.Website\bin\System.Web.WebPages.Razor.xml
 E:\MyWork\FRXS\FRXS.Website\bin\zh-Hans\EntityFramework.resources.dll
+E:\MyWork\FRXS\FRXS.Website\bin\zh-Hans\System.Net.Http.resources.dll
 E:\MyWork\FRXS\FRXS.Website\bin\zh-Hans\System.Net.Http.Formatting.resources.dll
+E:\MyWork\FRXS\FRXS.Website\bin\zh-Hans\System.Net.Http.WebRequest.resources.dll
 E:\MyWork\FRXS\FRXS.Website\bin\zh-Hans\System.Web.Http.resources.dll
 E:\MyWork\FRXS\FRXS.Website\bin\zh-Hans\System.Web.Http.WebHost.resources.dll
 E:\MyWork\FRXS\FRXS.Website\bin\zh-Hans\System.Web.Mvc.resources.dll
