@@ -5,10 +5,13 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     <link id="themeeasy" href="~/Content/easyui-1.4.3/themes/default/easyui.css" rel="stylesheet" />
+    <script type="text/javascript">
+        var nowDate = '@DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss")';
+    </script>
     @Scripts.Render("~/Content/easyui")
     @RenderSection("scripts", required: false)
 </head>
-<body style="margin:0px;padding:2px;overflow-y: hidden;" scroll="no">
+<body style="margin: 0px; padding: 2px; overflow-y: hidden;" scroll="no">
     @RenderBody()
 </body>
 </html>

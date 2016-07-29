@@ -69,7 +69,8 @@ function loadgrid() {
             { title: '开户行', field: 'BankName', width: 180 },
             { title: '工作人员签名', field: 'WorkMan', width: 105 },
             { title: '创建时间', field: 'CreateTime', width: 150, align: 'center' }
-        ]]
+        ]],
+        toolbar: [{ id: 'btnExport', text: '导出', iconCls: 'icon-export', handler: Export }]
     });
 };
 
@@ -111,5 +112,101 @@ function reset() {
     $("#searchForm").form("clear");
     $('#OutReason').combobox('setValue', '');
     $('#CollectionNum').combobox('setValue', '');
+}
+
+
+
+//导出事件
+function Export() {
+    var loading = window.top.frxs.loading("正在导出数据...");
+
+    //获取全部数据后导出到Excel
+    $.ajax({
+        url: '../TrafficFee/GetList',          //Aajx地址
+        type: "post",
+        dataType: "json",
+        data: {
+            //查询条件
+            txtName: $.trim($("#txtName").val()),
+            txtIDCard: $.trim($("#txtIDCard").val()),
+            OutReason: $("#OutReason").combobox("getValue"),
+            CollectionNum: $("#CollectionNum").combobox("getValue"),
+            StartDate: $.trim($("#StartDate").val()),
+            EndDate: $.trim($("#EndDate").val()),
+            Type: 'Query',
+            page: 1,
+            sort: 'CreateTime',
+            order: 'desc',
+            rows: 100000000//页数
+        },
+        success: function (result) {
+            if (result != undefined && result.rows != undefined) {
+                var rows = result.rows;
+                if (rows.length <= 0) {
+                    $.messager.alert("提示", "没有查询到数据。", "info");
+                    return false;
+                }
+
+                //标题行
+                var trtdCode = "<tr>";
+                trtdCode += "<td style='height:24px'>序号</td>";
+                trtdCode += "<td>身份证号码</td>";
+                trtdCode += "<td>献血者姓名</td>";
+                trtdCode += "<td>淘汰方式</td>";
+                trtdCode += "<td>采集血量</td>";
+                trtdCode += "<td>应付金额（元）</td>";
+                trtdCode += "<td>户名</td>";
+                trtdCode += "<td>银行帐号</td>";
+                trtdCode += "<td>开户行</td>";
+                trtdCode += "<td>工作人员签名</td>";
+                trtdCode += "<td>创建时间</td>";
+                trtdCode += "</tr>";
+
+                //装入数据
+                for (var i = 0; i < rows.length; i++) {
+                    trtdCode += "<tr>";
+                    trtdCode += "<td style=\"mso-number-format:'\@';\">" + (i + 1) + "</td>";
+                    trtdCode += "<td style='height:20px' x:str=\"'" + rows[i].IDCard + "\">" + rows[i].IDCard + "</td>";
+                    trtdCode += "<td>" + frxs.replaceCode(rows[i].Name) + "</td>";
+                    trtdCode += "<td>" + frxs.replaceCode(rows[i].OutReason) + "</td>";
+                    trtdCode += "<td>" + frxs.replaceCode(rows[i].CollectionNum) + "</td>";
+                    trtdCode += "<td style='mso-number-format:\"#,##0.00\";'>" + rows[i].Fee + "</td>";
+                    trtdCode += "<td>" + rows[i].AccountName + "</td>";
+                    trtdCode += "<td style=\"mso-number-format:'\@';\">" + rows[i].BankAccount + "</td>";
+                    trtdCode += "<td>" + rows[i].BankName + "</td>";
+                    trtdCode += "<td>" + rows[i].WorkMan + "</td>";
+                    trtdCode += "<td style=\"mso-number-format:'\@';\">" + rows[i].CreateTime + "</td>";
+                    trtdCode += "</tr>";
+                }
+                debugger;
+                //文件流
+                var dataCode = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>export</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table border="1">{table}</table></body></html>';
+                dataCode = dataCode.replace("{table}", trtdCode);
+
+                if (dataCode) {
+                    event.preventDefault();
+                    var bb = self.Blob;
+                    saveAs(
+                        new bb(
+                            ["\ufeff" + dataCode] //\ufeff防止utf8 bom防止中文乱码
+                            , { type: "html/plain;charset=utf8" }
+                        ), "机采交通费导出_" + frxs.nowDateTime("yyyyMMdd") + ".xls"
+                    );
+                }
+            }
+            loading.close();
+        },
+        error: function (request, textStatus, errThrown) {
+            if (textStatus) {
+                $.messager.alert("提示", textStatus, "info");
+            } else if (errThrown) {
+                $.messager.alert("提示", errThrown, "info");
+            } else {
+                $.messager.alert("提示", "出现错误", "info");
+            }
+            loading.close();
+        }
+    });
+
 }
 

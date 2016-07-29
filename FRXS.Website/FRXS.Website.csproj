@@ -412,6 +412,7 @@
     <Content Include="Content\easyui-1.4.3\themes\icons\cancel.png" />
     <Content Include="Content\easyui-1.4.3\themes\icons\clear.png" />
     <Content Include="Content\easyui-1.4.3\themes\icons\cut.png" />
+    <Content Include="Content\easyui-1.4.3\themes\icons\export.png" />
     <Content Include="Content\easyui-1.4.3\themes\icons\edit_add.png" />
     <Content Include="Content\easyui-1.4.3\themes\icons\edit_remove.png" />
     <Content Include="Content\easyui-1.4.3\themes\icons\filesave.png" />
@@ -513,6 +514,8 @@
     <Content Include="Content\images\tabicons.png" />
     <Content Include="Content\images\logo-xyzx.jpg" />
     <Content Include="Content\js\base.js" />
+    <Content Include="Content\js\common.js" />
+    <Content Include="Content\js\FileSaver.js" />
     <Content Include="Content\js\frxsCommon.js" />
     <Content Include="Content\js\jquery.autocomplete.min.js" />
     <Content Include="Content\js\layout.js" />

@@ -16,6 +16,7 @@ namespace FRXS.Website
                         "~/Content/easyui-1.4.3/jquery.cookie.js",
                         "~/Content/easyui-1.4.3/jquery.easyui.js",
                         "~/Content/js/layout.js",
+                        "~/Content/js/common.js",
                         "~/Content/js/frxsCommon.js",
                         "~/Content/easyui-1.4.3/locale/easyui-lang-zh_CN.js"));
 
