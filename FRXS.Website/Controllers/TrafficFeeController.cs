@@ -44,6 +44,7 @@ namespace FRXS.Website.Controllers
             var collectionNum = Request["CollectionNum"];
             var startDate = Request["StartDate"];
             var endDate = Request["EndDate"];
+            var type = Request["Type"];
 
 
             using (var db = new FRXSEntities())
@@ -79,6 +80,17 @@ namespace FRXS.Website.Controllers
                     trafficFee = trafficFee.Where(p => p.CreateTime < EndDate);
                 }
 
+                if (!string.IsNullOrEmpty(type))
+                {
+                    if (type == "Add")   //新增，只显示当前天的记录
+                    {
+                        DateTime AddStartDate = DateTime.Now.Date;
+                        DateTime AddEndDate = DateTime.Now.AddDays(1).Date;
+                        trafficFee = trafficFee.Where(p => p.CreateTime >= AddStartDate);
+                        trafficFee = trafficFee.Where(p => p.CreateTime < AddEndDate);
+                    }
+                }
+
                 //总数
                 var sum = trafficFee.Count();
 
@@ -99,7 +111,7 @@ namespace FRXS.Website.Controllers
                 {
                     trafficFee = trafficFee.OrderBy(p => p.IDCard).Skip((pageIndex - 1) * pageSize).Take(pageSize);
                 }
-               
+
 
                 var data = new
                 {

@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using FRXS.Common;
 using FRXS.Model;
+using System.Text;
 
 namespace FRXS.Website.Controllers
 {
@@ -52,7 +53,7 @@ namespace FRXS.Website.Controllers
             return View();
         }
         #endregion
-      
+
         /// <summary>
         /// 登录提交
         /// </summary>
@@ -66,7 +67,7 @@ namespace FRXS.Website.Controllers
         {
             //验证验证码
             var verifyCodeCookieValue = CookieHelper.Cookie.GetCookie(CookieHelper.VerifyCodeCookieName);
-            if (verifyCode.ToLower() !=DEncrypt.DEncryptOpt.Decode(verifyCodeCookieValue,DEncrypt.VerifyCodeKey).ToLower())
+            if (verifyCode.ToLower() != DEncrypt.DEncryptOpt.Decode(verifyCodeCookieValue, DEncrypt.VerifyCodeKey).ToLower())
             {
                 ViewBag.ErrorImage = "<img src='../Content/images/warning.gif' align='absmiddle' style='padding-right: 3px;' />";
                 ViewBag.ErrorMessage = "验证码错误";
@@ -80,6 +81,8 @@ namespace FRXS.Website.Controllers
                 {
                     //匹配成功保持Cookie
                     CookieHelper.Cookie.WriteCookie(CookieHelper.LoginCookieName, adminName);
+
+                    CookieHelper.Cookie.WriteCookie(CookieHelper.DeptCookieName, HttpUtility.UrlEncode(user.Dept, Encoding.GetEncoding("UTF-8")));
 
                     return RedirectToAction("Index");
                 }
@@ -101,7 +104,7 @@ namespace FRXS.Website.Controllers
 
             return RedirectToAction("Login");
         }
-        
+
         /// <summary>
         /// 验证码
         /// </summary>
@@ -119,7 +122,7 @@ namespace FRXS.Website.Controllers
 
             // 随机转动角度
             int randAngle = 45;
-            int mapwidth = (int) (randomcode.Length*20);
+            int mapwidth = (int)(randomcode.Length * 20);
             // 创建图片背景
             Bitmap map = new Bitmap(mapwidth - 3, 27);
             Graphics graph = Graphics.FromImage(map);
@@ -129,7 +132,7 @@ namespace FRXS.Website.Controllers
             graph.DrawRectangle(new Pen(Color.BurlyWood, 0), 0, 0, map.Width - 1, map.Height - 2);
             graph.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias; //模式
 
-            
+
 
             // 背景噪点生成
             Pen blackPen = new Pen(Color.LightGray, 0);
@@ -197,6 +200,99 @@ namespace FRXS.Website.Controllers
             graph.Dispose();
             map.Dispose();
             return null;
+        }
+
+
+
+        //根据权限获取菜单
+        public ActionResult GetMenu()
+        {
+            string deptName = HttpUtility.UrlDecode(CookieHelper.Cookie.GetCookie(CookieHelper.DeptCookieName), Encoding.GetEncoding("UTF-8")); 
+            List<Node> roots = new List<Node>();
+
+            List<Node> childrens1 = new List<Node>();
+            Node temp3 = new Node()
+            {
+                menuid = "dcfee5be-651e-4aac-8968-ce127e457454",
+                icon = "icon-add",
+                menuname = "新增",
+                url = "TrafficFee/Index"
+            };
+            Node temp4 = new Node()
+            {
+                menuid = "24ea7f2f-33c3-4e0d-8faa-7a114e4567b1",
+                icon = "icon-search",
+                menuname = "查询",
+                url = "TrafficFee/Query"
+            };
+            if (deptName != "财务科")
+            {
+                childrens1.Add(temp3);
+            }
+            if (deptName != "机采科")
+            {
+                childrens1.Add(temp4);
+            }
+            Node temp1 = new Node()
+            {
+                menuid = "1",
+                icon = "icon-role",
+                menuname = "机采交通费",
+                menus = childrens1
+            };
+
+            List<Node> childrens2 = new List<Node>();
+            Node temp5 = new Node()
+            {
+                menuid = "dcfee5be-651e-4aac-8968-ce127e457454",
+                icon = "icon-add",
+                menuname = "用户管理",
+                url = "orguser/index"
+            };
+            childrens2.Add(temp5);
+            Node temp2 = new Node()
+            {
+                menuid = "2",
+                icon = "icon-set",
+                menuname = "系统管理",
+                menus = childrens2
+            };
+            roots.Add(temp1);
+            if (deptName != "财务科" && deptName != "机采科")
+            {
+                roots.Add(temp2);
+            }
+            string result = roots.ToJsonString();
+            return Content(result);
+        }
+
+        /// <summary>
+        /// 菜单对象
+        /// </summary>
+        private class Node
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public string menuid { get; set; }
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public string icon { get; set; }
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public string menuname { get; set; }
+
+            public string url { get; set; }
+
+            /// <summary>
+            /// 
+            /// </summary>
+            public List<Node> menus { get; set; }
+
         }
     }
 }

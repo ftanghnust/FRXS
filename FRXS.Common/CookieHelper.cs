@@ -31,6 +31,11 @@ namespace FRXS.Common
         public const string LoginCookieName = "LoginName";
 
         /// <summary>
+        /// 部门名称
+        /// </summary>
+        public const string DeptCookieName = "DeptName";
+
+        /// <summary>
         /// 验证码cookie名称
         /// </summary>
         public const string VerifyCodeCookieName = "VerifyCode";

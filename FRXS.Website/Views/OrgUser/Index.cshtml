@@ -4,14 +4,14 @@
 }
 
 <form id="searchForm">
-<fieldset style="margin:0px 0px 2px 0px;display:none;" id="searchPlan">
-    <legend>信息查询</legend>
-    登录帐号：<input type="text" id="txtUserName" />&nbsp;&nbsp;
+    <fieldset style="margin: 0px 0px 2px 0px; display: none;" id="searchPlan">
+        <legend>信息查询</legend>
+        登录帐号：<input type="text" id="txtUserName" />&nbsp;&nbsp;
     真实姓名：<input type="text" id="txtUserTrueName" />&nbsp;&nbsp;
     所属部门：<input type="text" id="txtDept" />&nbsp;&nbsp;
-    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-search" onclick="loadgrid()">查询</a>
-    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-back" onclick="reset()">清空</a>
-</fieldset>
+    <a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-search" onclick="loadgrid()">查询</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconcls="icon-back" onclick="reset()">清空</a>
+    </fieldset>
 </form>
 <div id="grid"></div>
 <div id="dialog"></div>
@@ -36,15 +36,12 @@
             <tr>
                 <th align="center">所属部门：</th>
                 <td>
-                    <input type="text" class="easyui-validatebox" required="true" name="Dept" id="Dept" />
+                    <select class="easyui-combobox" name="Dept" id="Dept" required="true" style="width: 80px;" data-options="missingMessage:'请选择所属部门',panelHeight:'auto'">
+                        <option value="财务科">财务科</option>
+                        <option value="机采科">机采科</option>
+                    </select>
                 </td>
             </tr>
-           @* <tr>
-                <th align="center">密码：</th>
-                <td>
-                    <input type="text" class="easyui-validatebox" required="true" name="Password" id="Password" />
-                </td>
-            </tr>*@
         </table>
     </form>
 </div>

@@ -40,7 +40,8 @@ function loadgrid() {
         },
         queryParams: {
             txtName: $.trim($("#txtName").val()),
-            txtIDCard: $.trim($("#txtIDCard").val())
+            txtIDCard: $.trim($("#txtIDCard").val()),
+            Type: 'Add'
         },
 
         frozenColumns: [[

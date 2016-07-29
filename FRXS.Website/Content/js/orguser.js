@@ -315,7 +315,8 @@ function edit(id) {
             $("#UserId").val(obj.UserId);
             $("#UserName").val(obj.UserName);
             $("#UserTrueName").val(obj.UserTrueName);
-            $("#Dept").val(obj.Dept);
+            //$("#Dept").val(obj.Dept);
+            $('#Dept').combobox('setValue', obj.Dept);
             //$("#Password").val(obj.Password);
         }
     });

@@ -44,7 +44,8 @@ function loadgrid() {
             OutReason: $("#OutReason").combobox("getValue"),
             CollectionNum: $("#CollectionNum").combobox("getValue"),
             StartDate: $.trim($("#StartDate").val()),
-            EndDate: $.trim($("#EndDate").val())
+            EndDate: $.trim($("#EndDate").val()),
+            Type: 'Query'
         },
 
         frozenColumns: [[
