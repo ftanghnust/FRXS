@@ -51,6 +51,7 @@ function loadgrid() {
             { title: '献血者姓名', field: 'Name', width: 95, align: 'left' }
         ]],
         columns: [[
+            { title: '手机号码', field: 'BZ1', width: 100, align: 'center' },
             { title: '淘汰方式', field: 'OutReason', width: 65, align: 'center' },
             { title: '采集血量', field: 'CollectionNum', width: 80, align: 'right' },
             {
@@ -138,7 +139,7 @@ function add() {
         title: "添加",
         url: "../TrafficFee/AddOrEdit",
         owdoc: window.top,
-        width: 490,
+        width: 510,
         height: 400,
         buttons: [{
             id: 'btnOk',
@@ -199,7 +200,7 @@ function edit(id) {
         title: "编辑",
         url: "../TrafficFee/AddOrEdit?ID=" + id,
         owdoc: window.top,
-        width: 490,
+        width: 510,
         height: 400,
         buttons: [{
             id: 'btnOk',

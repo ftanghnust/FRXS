@@ -6,7 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="1969f38d1a6547759a381b92c8e9ee97" Name="关系图1">
         <EntityTypeShape EntityType="FRXSModel.OrgUser" Width="1.5" PointX="2.75" PointY="2.625" />
-        <EntityTypeShape EntityType="FRXSModel.TrafficFee" Width="1.5" PointX="7.875" PointY="2.875" />
+        <EntityTypeShape EntityType="FRXSModel.TrafficFee" Width="1.5" PointX="7.375" PointY="1.5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

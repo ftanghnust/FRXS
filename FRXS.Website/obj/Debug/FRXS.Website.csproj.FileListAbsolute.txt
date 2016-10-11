@@ -142,3 +142,11 @@ E:\MyWork\FRXS\FRXS.Website\bin\zh-Hans\System.Web.WebPages.Razor.resources.dll
 E:\MyWork\FRXS\FRXS.Website\obj\Debug\FRXS.Website.csprojResolveAssemblyReference.cache
 E:\MyWork\FRXS\FRXS.Website\obj\Debug\FRXS.Website.dll
 E:\MyWork\FRXS\FRXS.Website\obj\Debug\FRXS.Website.pdb
+E:\MyWork\FRXS\FRXS.Website\bin\NPOI.dll
+E:\MyWork\FRXS\FRXS.Website\bin\NPOI.OOXML.dll
+E:\MyWork\FRXS\FRXS.Website\bin\ICSharpCode.SharpZipLib.dll
+E:\MyWork\FRXS\FRXS.Website\bin\NPOI.OpenXmlFormats.dll
+E:\MyWork\FRXS\FRXS.Website\bin\NPOI.OpenXml4Net.dll
+E:\MyWork\FRXS\FRXS.Website\bin\NPOI.xml
+E:\MyWork\FRXS\FRXS.Website\bin\NPOI.OOXML.xml
+E:\MyWork\FRXS\FRXS.Website\bin\NPOI.OpenXml4Net.xml

@@ -10,3 +10,11 @@ E:\MyWork\FRXS\FRXS.Common\bin\Debug\FRXS.Common.dll
 E:\MyWork\FRXS\FRXS.Common\bin\Debug\FRXS.Common.pdb
 E:\MyWork\FRXS\FRXS.Common\obj\Debug\FRXS.Common.dll
 E:\MyWork\FRXS\FRXS.Common\obj\Debug\FRXS.Common.pdb
+E:\MyWork\FRXS\FRXS.Common\bin\Debug\NPOI.dll
+E:\MyWork\FRXS\FRXS.Common\bin\Debug\NPOI.OOXML.dll
+E:\MyWork\FRXS\FRXS.Common\bin\Debug\NPOI.OpenXml4Net.dll
+E:\MyWork\FRXS\FRXS.Common\bin\Debug\NPOI.OpenXmlFormats.dll
+E:\MyWork\FRXS\FRXS.Common\bin\Debug\ICSharpCode.SharpZipLib.dll
+E:\MyWork\FRXS\FRXS.Common\bin\Debug\NPOI.xml
+E:\MyWork\FRXS\FRXS.Common\bin\Debug\NPOI.OOXML.xml
+E:\MyWork\FRXS\FRXS.Common\bin\Debug\NPOI.OpenXml4Net.xml

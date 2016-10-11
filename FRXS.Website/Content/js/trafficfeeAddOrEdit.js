@@ -82,11 +82,13 @@ $(function () {
             $("#AccountName").val("");
             $("#BankAccount").val("");
             $("#BankName").val("");
+            $("#BZ1").val("");
         } else {
             $("#Name").val(data.Name);
             $("#AccountName").val(data.AccountName);
             $("#BankAccount").val(data.BankAccount);
             $("#BankName").val(data.BankName);
+            $("#BZ1").val(data.BZ1);   //手机号码
         }
     });
 
@@ -140,8 +142,13 @@ function collectionNumOnSelect(rec) {
 function saveData() {
     $(this).attr("disabled", "disabled");
     var validate = $("#formAdd").form('validate');
+    debugger;
     if (!validate) {
         //window.top.$.messager.alert("提示", "数据没有填写完整，请检查！", "info");
+        var isPass = $('input[name="IsPass"]').filter(':checked').val();
+        if (typeof (isPass) == "undefined") {
+            window.top.$.messager.alert("提示", "没有选择'是否通过'值！", "info");
+        } 
         return false;
     }
     var isPass = $('input[name="IsPass"]').filter(':checked').val();
@@ -308,5 +315,24 @@ $.extend($.fn.validatebox.defaults.rules, {
             return flag == true ? true : false;
         },
         message: '不是有效的银行卡号'
+    },
+    phoneRex: {
+        validator: function (value) {
+            var rex = /^1[3-8]+\d{9}$/;
+            //var rex=/^(([0\+]\d{2,3}-)?(0\d{2,3})-)(\d{7,8})(-(\d{3,}))?$/;
+            //区号：前面一个0，后面跟2-3位数字 ： 0\d{2,3}
+            //电话号码：7-8位数字： \d{7,8
+            //分机号：一般都是3位数字： \d{3,}
+            //这样连接起来就是验证电话的正则表达式了：/^((0\d{2,3})-)(\d{7,8})(-(\d{3,}))?$/		 
+            var rex2 = /^((0\d{2,3})-)(\d{7,8})(-(\d{3,}))?$/;
+            if (rex.test(value) || rex2.test(value)) {
+                // alert('t'+value);
+                return true;
+            } else {
+                //alert('false '+value);
+                return false;
+            }
+        },
+        message: '请输入正确电话或手机格式'
     }
 });

@@ -1,5 +1,7 @@
 ﻿using FRXS.Common;
+using FRXS.Common.Excel;
 using FRXS.Model;
+using FRXS.Website.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,6 +46,7 @@ namespace FRXS.Website.Controllers
             var collectionNum = Request["CollectionNum"];
             var startDate = Request["StartDate"];
             var endDate = Request["EndDate"];
+            var bz1 = Request["BZ1"];
             var type = Request["Type"];
 
 
@@ -78,6 +81,11 @@ namespace FRXS.Website.Controllers
                 {
                     DateTime EndDate = DateTime.Parse(endDate).AddDays(1);
                     trafficFee = trafficFee.Where(p => p.CreateTime < EndDate);
+                }
+
+                if (!string.IsNullOrEmpty(bz1))
+                {
+                    trafficFee = trafficFee.Where(p => p.BZ1.Contains(bz1));
                 }
 
                 if (!string.IsNullOrEmpty(type))
@@ -152,6 +160,7 @@ namespace FRXS.Website.Controllers
                             dbtrafficFee.CollectionNum = trafficFee.CollectionNum;
                             dbtrafficFee.Fee = trafficFee.Fee;
                             dbtrafficFee.ModifyTime = DateTime.Now;
+                            dbtrafficFee.BZ1 = trafficFee.BZ1;  //手机号码
                         }
                     }
                     else
@@ -261,13 +270,122 @@ namespace FRXS.Website.Controllers
                     Name = g.Max(item => item.Name),
                     AccountName = g.Max(item => item.AccountName),
                     BankAccount = g.Max(item => item.BankAccount),
-                    BankName = g.Max(item => item.BankName)
+                    BankName = g.Max(item => item.BankName),
+                    BZ1 = g.Max(item => item.BZ1)
                 });
                 return Content(result.ToJsonString());
             }
         }
 
+        /// <summary>
+        /// 导出excel表格
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult DataExport()
+        {
+            IList<TrafficFeeModel> detailsmodel = new List<TrafficFeeModel>();
+            var pageIndex = 1;
+            var pageSize = 100000000;
+            //var sort = "CreateTime";
+            //var order = "desc";
+            var name = Request["txtName"];
+            var idCard = Request["txtIDCard"];
+            var outReason = Request["OutReason"];
+            var collectionNum = Request["CollectionNum"];
+            var startDate = Request["StartDate"];
+            var endDate = Request["EndDate"];
+            var bz1 = Request["BZ1"];
+            var type = "Query";
 
 
+            using (var db = new FRXSEntities())
+            {
+                var trafficFee = db.TrafficFee.Where(p => true);
+                //where 条件
+                if (!string.IsNullOrEmpty(name))
+                {
+                    trafficFee = trafficFee.Where(p => p.Name.Contains(name));
+                }
+                if (!string.IsNullOrEmpty(idCard))
+                {
+                    trafficFee = trafficFee.Where(p => p.IDCard.Contains(idCard));
+                }
+                if (!string.IsNullOrEmpty(outReason))
+                {
+                    trafficFee = trafficFee.Where(p => p.OutReason == outReason);
+                }
+                if (!string.IsNullOrEmpty(collectionNum))
+                {
+                    trafficFee = trafficFee.Where(p => p.CollectionNum == collectionNum);
+                }
+
+                if (!string.IsNullOrEmpty(startDate))
+                {
+                    DateTime StartDate = DateTime.Parse(startDate);
+                    trafficFee = trafficFee.Where(p => p.CreateTime >= StartDate);
+                }
+
+                if (!string.IsNullOrEmpty(endDate))
+                {
+                    DateTime EndDate = DateTime.Parse(endDate).AddDays(1);
+                    trafficFee = trafficFee.Where(p => p.CreateTime < EndDate);
+                }
+
+                if (!string.IsNullOrEmpty(bz1))
+                {
+                    trafficFee = trafficFee.Where(p => p.BZ1.Contains(bz1));
+                }
+
+                if (!string.IsNullOrEmpty(type))
+                {
+                    if (type == "Add")   //新增，只显示当前天的记录
+                    {
+                        DateTime AddStartDate = DateTime.Now.Date;
+                        DateTime AddEndDate = DateTime.Now.AddDays(1).Date;
+                        trafficFee = trafficFee.Where(p => p.CreateTime >= AddStartDate);
+                        trafficFee = trafficFee.Where(p => p.CreateTime < AddEndDate);
+                    }
+                }
+
+                //总数
+                //var sum = trafficFee.Count();
+
+                //排序及分页
+                trafficFee = trafficFee.OrderByDescending(p => p.CreateTime).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+
+                var temp = trafficFee.ToList();
+                for (int i = 0; i < temp.Count; i++)
+                {
+                    TrafficFeeModel tempmodel = new TrafficFeeModel();
+                    tempmodel.Name = temp[i].Name;
+                    tempmodel.IDCard = temp[i].IDCard;
+                    tempmodel.OutReason = temp[i].OutReason;
+                    tempmodel.CollectionNum = temp[i].CollectionNum;
+                    tempmodel.Fee = temp[i].Fee;
+                    tempmodel.WorkMan = temp[i].WorkMan;
+                    tempmodel.AccountName = temp[i].AccountName;
+                    tempmodel.BankAccount = temp[i].BankAccount;
+                    tempmodel.BankName = temp[i].BankName;
+                    tempmodel.BZ1 = temp[i].BZ1;
+                    tempmodel.CreateTime = temp[i].CreateTime;
+                    detailsmodel.Add(tempmodel);
+                }
+                int maxRows = 5000;
+                if (detailsmodel.Count > 0)
+                {
+                    string fileName = "机采交通费导出_" + DateTime.Now.ToString("yyyyMMdd") + ".xls"; //DateTime.Now.ToString("yyyyMMddHHmmssfff")
+                    byte[] byteArr = NpoiExcelhelper.ExportExcel
+                        (
+                            detailsmodel,
+                            maxRows,
+                            Server.MapPath("UploadFile"),
+                            fileName
+                        );
+
+                    return File(byteArr, "application/vnd.ms-excel", fileName);
+                }
+                return Content("数据不存在可能已被删除，不能导出！");
+            }
+        }
     }
 }

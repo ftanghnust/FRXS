@@ -62,7 +62,8 @@ function InitLeftMenu() {
 
         var url = $(this).attr("rel");
         var menuid = $(this).attr("ref");
-        var icon = getIcon(menuid, icon);
+        debugger;
+        var icon = getIcon(menuid);
 
         addTab(tabTitle, url, icon);
         $('.easyui-accordion li div').removeClass("selected");
@@ -79,15 +80,24 @@ function InitLeftMenu() {
     $('#nav').accordion('select', t);
 }
 //获取左侧导航的图标
-function getIcon(menuid) {
+function getIcon(Menuid) {
     var icon = 'icon ';
-    $.each(_menus.menus, function (i, n) {
-        $.each(n.menus, function (j, o) {
-            if (o.menuid == menuid) {
-                icon += o.icon;
+    for (var i = 0; i < _menus.menus.length; i++) {
+        for (var j = 0; j < _menus.menus[i].menus.length; j++) {
+            if (_menus.menus[i].menus[j].menuid == Menuid) {
+                icon += _menus.menus[i].menus[j].icon;
+                break;
             }
-        });
-    });
+        }
+    }
+    //$.each(_menus.menus, function (i, n) {
+    //    $.each(n.menus, function (j, o) {
+    //        alert(o);
+    //        if (o.menuid == menuid) {
+    //            icon += o.icon;
+    //        }
+    //    });
+    //});
 
     return icon;
 }
@@ -233,7 +243,7 @@ var _menus = {
             "menuname": "机采交通费",
             "menus": [
                 { "menuid": "dcfee5be-651e-4aac-8968-ce127e457454", "menuname": "新增", "icon": "icon-add", "url": 'TrafficFee/Index' },
-                { "menuid": "24ea7f2f-33c3-4e0d-8faa-7a114e4567b1", "menuname": "查询", "icon": "icon-search", "url": 'TrafficFee/Query' },
+                { "menuid": "24ea7f2f-33c3-4e0d-8faa-7a114e4567b1", "menuname": "查询", "icon": "icon-search", "url": 'TrafficFee/Query' }
                 //{ "menuid": "24ea7f2f-33c3-4e0d-8faa-7a114e4567b1", "menuname": "查询", "icon": "icon-search", "url": 'control/accordion' },
                 //{ "menuid": "24ea7f2f-33c3-4e0d-8faa-7a114e4567b2", "menuname": "combobox", "icon": "icon-set", "url": 'control/combobox' },
                 //{ "menuid": "24ea7f2f-33c3-4e0d-8faa-7a114e4567b3", "menuname": "dialog", "icon": "icon-set", "url": 'control/dialog' },
@@ -249,7 +259,7 @@ var _menus = {
         , {
             "menuid": "2", "icon": "icon-set", "menuname": "系统管理",
             "menus": [
-                    { "menuid": "dcfee5be-651e-4aac-8968-ce127e457454", "menuname": "用户管理", "icon": "icon-add", "url": 'orguser/index' },
+                    { "menuid": "dcfee5be-651e-4aac-8968-ce127e457453", "menuname": "用户管理", "icon": "icon-add", "url": 'orguser/index' }
             ]
         }
     ]
