@@ -525,6 +525,7 @@
     <Content Include="Content\js\trafficfeeAddOrEdit.js" />
     <Content Include="Content\js\trafficfeeQuery.js" />
     <Content Include="Content\js\updatePwd.js" />
+    <Content Include="Content\js\seleRegion.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Web.config">
@@ -612,6 +613,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\OrgUser\UpdatePWD.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\SelRegion.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

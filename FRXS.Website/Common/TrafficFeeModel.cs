@@ -8,16 +8,18 @@ namespace FRXS.Website.Common
 {
     public class TrafficFeeModel
     {
-        [DisplayName("身份证号码")]
-        public string IDCard { get; set; }
+        //只需要姓名、银行卡号、户名、开户行、采血时间、工作人员签名
+
+        //[DisplayName("身份证号码")]
+        //public string IDCard { get; set; }
         [DisplayName("献血者姓名")]
         public string Name { get; set; }
-        [DisplayName("手机号码")]
-        public string BZ1 { get; set; }
-        [DisplayName("淘汰方式")]
-        public string OutReason { get; set; }
-        [DisplayName("采集血量")]
-        public string CollectionNum { get; set; }
+        //[DisplayName("手机号码")]
+        //public string BZ1 { get; set; }
+        //[DisplayName("淘汰方式")]
+        //public string OutReason { get; set; }
+        //[DisplayName("采集血量")]
+        //public string CollectionNum { get; set; }
         [DisplayName("应付金额（元）")]
         public Nullable<decimal> Fee { get; set; }
         [DisplayName("户名")]
@@ -28,6 +30,8 @@ namespace FRXS.Website.Common
         public string BankName { get; set; }
         [DisplayName("工作人员签名")]
         public string WorkMan { get; set; }
+        //[DisplayName("采血地点")]
+        //public string BZ2 { get; set; }
         [DisplayName("创建时间")]
         public Nullable<System.DateTime> CreateTime { get; set; }
     }

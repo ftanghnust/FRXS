@@ -47,8 +47,14 @@ function loadgrid() {
         frozenColumns: [[
             //冻结列
             { field: 'ck', checkbox: true }, //选择
-            { title: '身份证号码', field: 'IDCard', width: 160 },
-            { title: '献血者姓名', field: 'Name', width: 95, align: 'left' }
+            {
+                title: '身份证号码', field: 'IDCard', width: 160,
+                formatter: function (value, rec) {
+                    return value.substring(0, 7) + '****' + value.substring(11);
+                }
+            },
+            { title: '献血者姓名', field: 'Name', width: 90, align: 'left' },
+            { title: '与持卡人关系', field: 'BZ3', width: 90, align: 'left' }
         ]],
         columns: [[
             { title: '手机号码', field: 'BZ1', width: 100, align: 'center' },
@@ -65,6 +71,7 @@ function loadgrid() {
             { title: '银行帐号', field: 'BankAccount', width: 180 },
             { title: '开户行', field: 'BankName', width: 180 },
             { title: '工作人员签名', field: 'WorkMan', width: 105 },
+            { title: '采血地点', field: 'BZ2', width: 70, align: 'center' },
             {
                 field: 'opt',
                 title: '操作',

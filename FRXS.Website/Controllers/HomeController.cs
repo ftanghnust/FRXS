@@ -35,6 +35,15 @@ namespace FRXS.Website.Controllers
         }
 
         /// <summary>
+        /// 选择区域
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult SelRegion()
+        {
+            return View();
+        }
+
+        /// <summary>
         /// 测试
         /// </summary>
         /// <returns></returns>
@@ -82,7 +91,14 @@ namespace FRXS.Website.Controllers
                     //匹配成功保持Cookie
                     CookieHelper.Cookie.WriteCookie(CookieHelper.LoginCookieName, adminName);
 
+                    CookieHelper.Cookie.WriteCookie(CookieHelper.TrueCookieName, HttpUtility.UrlEncode(user.UserTrueName, Encoding.GetEncoding("UTF-8")));
+
                     CookieHelper.Cookie.WriteCookie(CookieHelper.DeptCookieName, HttpUtility.UrlEncode(user.Dept, Encoding.GetEncoding("UTF-8")));
+
+                    if (user.Dept == "机采科")
+                    {
+                        return RedirectToAction("SelRegion");
+                    }
 
                     return RedirectToAction("Index");
                 }
@@ -101,6 +117,12 @@ namespace FRXS.Website.Controllers
         {
             //清除Cookie
             CookieHelper.Cookie.RemoveCookie(CookieHelper.LoginCookieName);
+            //清除Cookie
+            CookieHelper.Cookie.RemoveCookie(CookieHelper.DeptCookieName);
+            //清除Cookie
+            CookieHelper.Cookie.RemoveCookie(CookieHelper.VerifyCodeCookieName);
+            //清除Cookie
+            CookieHelper.Cookie.RemoveCookie(CookieHelper.RegionCookieName);
 
             return RedirectToAction("Login");
         }
@@ -229,7 +251,7 @@ namespace FRXS.Website.Controllers
             {
                 childrens1.Add(temp3);
             }
-            if (deptName != "机采科")
+            if (deptName != "机采科")  //对于部分机采科部分帐号可以查收的，需修改此处条件 ！！！
             {
                 childrens1.Add(temp4);
             }

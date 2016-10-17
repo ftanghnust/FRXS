@@ -46,14 +46,21 @@ function loadgrid() {
             StartDate: $.trim($("#StartDate").val()),
             EndDate: $.trim($("#EndDate").val()),
             BZ1: $.trim($("#BZ1").val()),
+            BZ2: $("#BZ2").combobox("getValue"),
             Type: 'Query'
         },
 
         frozenColumns: [[
             //冻结列
             { field: 'ck', checkbox: true }, //选择
-            { title: '身份证号码', field: 'IDCard', width: 160 },
-            { title: '献血者姓名', field: 'Name', width: 95, align: 'left' }
+            {
+                title: '身份证号码', field: 'IDCard', width: 160,
+                formatter: function (value, rec) {
+                    return value.substring(0, 7) + '****' + value.substring(11);
+                }
+            },
+            { title: '献血者姓名', field: 'Name', width: 90, align: 'left' },
+            { title: '与持卡人关系', field: 'BZ3', width: 90, align: 'left' }
         ]],
         columns: [[
             { title: '手机号码', field: 'BZ1', width: 100, align: 'center' },
@@ -70,7 +77,20 @@ function loadgrid() {
             { title: '银行帐号', field: 'BankAccount', width: 180 },
             { title: '开户行', field: 'BankName', width: 180 },
             { title: '工作人员签名', field: 'WorkMan', width: 105 },
-            { title: '创建时间', field: 'CreateTime', width: 150, align: 'center' }
+            { title: '采血地点', field: 'BZ2', width: 70, align: 'center' },
+            { title: '创建时间', field: 'CreateTime', width: 150, align: 'center' },
+            {
+                 field: 'opt',
+                 title: '操作',
+                 align: 'center',
+                 width: 200,
+                 formatter: function (value, rec) {
+                     var str = "";
+                     str += "<a class='rowbtn' onclick='edit(" + rec.ID + ")'>修改</a>";
+                     str += "<a class='rowbtn' onclick='del(" + rec.ID + ")'>删除</a>";
+                     return str;
+                 }
+            }
         ]],
         toolbar: [{ id: 'btnExport', text: '导出', iconCls: 'icon-export', handler: Export }]
     });
@@ -114,12 +134,70 @@ function reset() {
     $("#searchForm").form("clear");
     $('#OutReason').combobox('setValue', '');
     $('#CollectionNum').combobox('setValue', '');
+    $('#BZ2').combobox('setValue', '');
+}
+
+
+//删除
+function del(id) {
+    if (id != "") {
+        var rows = $("#grid").datagrid("getSelections");
+        $.messager.confirm("提示", "您确认删除吗？", function (res) {
+            if (res) {
+                $.ajax({
+                    url: '../TrafficFee/DeletebyId',
+                    type: 'post',
+                    dataType: "json",
+                    data: { id: id },
+                    success: function (result) {
+                        if (result != undefined && result.Info != undefined) {
+                            if (result.Flag == "SUCCESS") {
+                                //当删除完成之后清除信息 
+                                $("#grid").datagrid("clearSelections");
+                                $("#grid").datagrid("reload");
+                            } else {
+                                $.messager.alert("提示", result.Info, "info");
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    } else {
+        $.messager.alert("提示", "请选择你要删除的数据");
+    }
+}
+
+//编辑
+function edit(id) {
+
+    var thisdlg = frxs.dialog({
+        title: "编辑",
+        url: "../TrafficFee/AddOrEdit?ID=" + id,
+        owdoc: window.top,
+        width: 510,
+        height: 400,
+        buttons: [{
+            id: 'btnOk',
+            text: '提交',
+            iconCls: 'icon-ok',
+            handler: function () {
+                thisdlg.subpage.saveData();
+            }
+        }, {
+            text: '关闭',
+            iconCls: 'icon-cancel',
+            handler: function () {
+                thisdlg.dialog("close");
+            }
+        }]
+    });
 }
 
 
 //导出事件
 function Export() {
-    location.href = "../TrafficFee/DataExport?txtName=" + $.trim($("#txtName").val()) + "&txtIDCard=" + $.trim($("#txtIDCard").val()) + "&OutReason=" + $("#OutReason").combobox("getValue") + "&CollectionNum=" + $("#CollectionNum").combobox("getValue") + "&StartDate=" + $.trim($("#StartDate").val()) + "&EndDate=" + $.trim($("#EndDate").val()) + "&BZ1=" + $.trim($("#BZ1").val());
+    location.href = "../TrafficFee/DataExport?txtName=" + $.trim($("#txtName").val()) + "&txtIDCard=" + $.trim($("#txtIDCard").val()) + "&OutReason=" + $("#OutReason").combobox("getValue") + "&CollectionNum=" + $("#CollectionNum").combobox("getValue") + "&StartDate=" + $.trim($("#StartDate").val()) + "&EndDate=" + $.trim($("#EndDate").val()) + "&BZ1=" + $.trim($("#BZ1").val()) + "&BZ2=" + $("#BZ2").combobox("getValue");
 }
 
 

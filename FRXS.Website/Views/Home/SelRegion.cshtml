@@ -1,0 +1,55 @@
+﻿@{
+    Layout = null;
+    ViewBag.Title = @FRXS.Website.Common.SiteConfig.Config.SiteName;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    <link id="themeeasy" href="~/Content/easyui-1.4.3/themes/default/easyui.css" rel="stylesheet" />
+</head>
+<body>
+    <noscript>
+        <div style="position: absolute; width: 98%; background: white; text-align: center;">
+            <img src="~/Content/images/noscript.gif" alt='抱歉，请开启脚本支持！' />
+        </div>
+    </noscript>
+    <div id="dlg" class="easyui-dialog" title="选择采血地点" style="width: 400px; height: 200px; padding: 10px"
+        data-options="
+                modal:true,
+                closable:false,
+                iconCls: 'icon-save',
+                buttons: [{
+                    text:'确认',
+                    iconCls:'icon-ok',
+                    handler:sure
+                },{
+                    text:'取消',
+                    iconCls:'icon-cancel',
+                    handler:cancel
+                }]
+            ">
+        <div>
+            <table>
+                <tr>
+                    <td>请选择采血地点：
+                    </td>
+                    <td>
+                        <select class="easyui-combobox" name="region" id="region" style="width: 100px;" data-options="required:true,editable:false,panelHeight:'auto'">
+                            <option value="本部">本部</option>
+                            <option value="河西">河西</option>
+                            <option value="附二">附二</option>
+                        </select>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    @Scripts.Render("~/Content/easyui")
+    <script src="@Url.Content("~/Content/js/base.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/js/seleRegion.js")" type="text/javascript"></script>
+</body>
+</html>
+

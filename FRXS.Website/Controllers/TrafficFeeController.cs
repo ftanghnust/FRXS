@@ -47,6 +47,7 @@ namespace FRXS.Website.Controllers
             var startDate = Request["StartDate"];
             var endDate = Request["EndDate"];
             var bz1 = Request["BZ1"];
+            var bz2 = Request["BZ2"];
             var type = Request["Type"];
 
 
@@ -86,6 +87,10 @@ namespace FRXS.Website.Controllers
                 if (!string.IsNullOrEmpty(bz1))
                 {
                     trafficFee = trafficFee.Where(p => p.BZ1.Contains(bz1));
+                }
+                if (!string.IsNullOrEmpty(bz2))
+                {
+                    trafficFee = trafficFee.Where(p => p.BZ2.Contains(bz2));
                 }
 
                 if (!string.IsNullOrEmpty(type))
@@ -161,13 +166,16 @@ namespace FRXS.Website.Controllers
                             dbtrafficFee.Fee = trafficFee.Fee;
                             dbtrafficFee.ModifyTime = DateTime.Now;
                             dbtrafficFee.BZ1 = trafficFee.BZ1;  //手机号码
+                            dbtrafficFee.BZ3 = trafficFee.BZ3;  //与持卡人关系
                         }
                     }
                     else
                     {
                         //添加
                         trafficFee.CreateTime = DateTime.Now;
-                        trafficFee.WorkMan = CookieHelper.Cookie.GetCookie(CookieHelper.LoginCookieName);
+                        //trafficFee.WorkMan = CookieHelper.Cookie.GetCookie(CookieHelper.LoginCookieName);
+                        trafficFee.WorkMan = HttpUtility.UrlDecode(CookieHelper.Cookie.GetCookie(CookieHelper.TrueCookieName));
+                        trafficFee.BZ2 = HttpUtility.UrlDecode(CookieHelper.Cookie.GetCookie(CookieHelper.RegionCookieName));     //写入区域信息
                         db.TrafficFee.Add(trafficFee);
                     }
                     db.SaveChanges();
@@ -264,7 +272,7 @@ namespace FRXS.Website.Controllers
                 {
                     trafficFee = trafficFee.Where(p => p.IDCard.Contains(idcard));
                 }
-                var result = trafficFee.GroupBy(p => p.IDCard).Take(10).Select(g => new
+                var result = trafficFee.OrderByDescending(o => o.CreateTime).GroupBy(p => p.IDCard).Take(10).Select(g => new
                 {
                     IDCard = g.Max(item => item.IDCard),
                     Name = g.Max(item => item.Name),
@@ -295,6 +303,7 @@ namespace FRXS.Website.Controllers
             var startDate = Request["StartDate"];
             var endDate = Request["EndDate"];
             var bz1 = Request["BZ1"];
+            var bz2 = Request["BZ2"];
             var type = "Query";
 
 
@@ -336,6 +345,11 @@ namespace FRXS.Website.Controllers
                     trafficFee = trafficFee.Where(p => p.BZ1.Contains(bz1));
                 }
 
+                if (!string.IsNullOrEmpty(bz2))
+                {
+                    trafficFee = trafficFee.Where(p => p.BZ2.Contains(bz2));
+                }
+
                 if (!string.IsNullOrEmpty(type))
                 {
                     if (type == "Add")   //新增，只显示当前天的记录
@@ -356,17 +370,19 @@ namespace FRXS.Website.Controllers
                 var temp = trafficFee.ToList();
                 for (int i = 0; i < temp.Count; i++)
                 {
+                    //只需要姓名、银行卡号、户名、开户行、采血时间、工作人员签名
                     TrafficFeeModel tempmodel = new TrafficFeeModel();
                     tempmodel.Name = temp[i].Name;
-                    tempmodel.IDCard = temp[i].IDCard;
-                    tempmodel.OutReason = temp[i].OutReason;
-                    tempmodel.CollectionNum = temp[i].CollectionNum;
+                    //tempmodel.IDCard = temp[i].IDCard;
+                    //tempmodel.OutReason = temp[i].OutReason;
+                    //tempmodel.CollectionNum = temp[i].CollectionNum;
                     tempmodel.Fee = temp[i].Fee;
                     tempmodel.WorkMan = temp[i].WorkMan;
                     tempmodel.AccountName = temp[i].AccountName;
                     tempmodel.BankAccount = temp[i].BankAccount;
                     tempmodel.BankName = temp[i].BankName;
-                    tempmodel.BZ1 = temp[i].BZ1;
+                    //tempmodel.BZ1 = temp[i].BZ1;
+                    //tempmodel.BZ2 = temp[i].BZ2;
                     tempmodel.CreateTime = temp[i].CreateTime;
                     detailsmodel.Add(tempmodel);
                 }

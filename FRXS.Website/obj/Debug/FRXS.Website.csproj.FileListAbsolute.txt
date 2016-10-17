@@ -112,6 +112,11 @@ E:\MyWork\FRXS\FRXS.Website\bin\System.Web.WebPages.Deployment.dll
 E:\MyWork\FRXS\FRXS.Website\bin\System.Web.WebPages.dll
 E:\MyWork\FRXS\FRXS.Website\bin\System.Web.WebPages.Razor.dll
 E:\MyWork\FRXS\FRXS.Website\bin\WebGrease.dll
+E:\MyWork\FRXS\FRXS.Website\bin\NPOI.dll
+E:\MyWork\FRXS\FRXS.Website\bin\NPOI.OOXML.dll
+E:\MyWork\FRXS\FRXS.Website\bin\ICSharpCode.SharpZipLib.dll
+E:\MyWork\FRXS\FRXS.Website\bin\NPOI.OpenXmlFormats.dll
+E:\MyWork\FRXS\FRXS.Website\bin\NPOI.OpenXml4Net.dll
 E:\MyWork\FRXS\FRXS.Website\bin\FRXS.Common.pdb
 E:\MyWork\FRXS\FRXS.Website\bin\FRXS.Model.pdb
 E:\MyWork\FRXS\FRXS.Website\bin\EntityFramework.xml
@@ -126,6 +131,9 @@ E:\MyWork\FRXS\FRXS.Website\bin\System.Web.Razor.xml
 E:\MyWork\FRXS\FRXS.Website\bin\System.Web.WebPages.xml
 E:\MyWork\FRXS\FRXS.Website\bin\System.Web.WebPages.Deployment.xml
 E:\MyWork\FRXS\FRXS.Website\bin\System.Web.WebPages.Razor.xml
+E:\MyWork\FRXS\FRXS.Website\bin\NPOI.xml
+E:\MyWork\FRXS\FRXS.Website\bin\NPOI.OOXML.xml
+E:\MyWork\FRXS\FRXS.Website\bin\NPOI.OpenXml4Net.xml
 E:\MyWork\FRXS\FRXS.Website\bin\zh-Hans\EntityFramework.resources.dll
 E:\MyWork\FRXS\FRXS.Website\bin\zh-Hans\System.Net.Http.resources.dll
 E:\MyWork\FRXS\FRXS.Website\bin\zh-Hans\System.Net.Http.Formatting.resources.dll
@@ -142,11 +150,3 @@ E:\MyWork\FRXS\FRXS.Website\bin\zh-Hans\System.Web.WebPages.Razor.resources.dll
 E:\MyWork\FRXS\FRXS.Website\obj\Debug\FRXS.Website.csprojResolveAssemblyReference.cache
 E:\MyWork\FRXS\FRXS.Website\obj\Debug\FRXS.Website.dll
 E:\MyWork\FRXS\FRXS.Website\obj\Debug\FRXS.Website.pdb
-E:\MyWork\FRXS\FRXS.Website\bin\NPOI.dll
-E:\MyWork\FRXS\FRXS.Website\bin\NPOI.OOXML.dll
-E:\MyWork\FRXS\FRXS.Website\bin\ICSharpCode.SharpZipLib.dll
-E:\MyWork\FRXS\FRXS.Website\bin\NPOI.OpenXmlFormats.dll
-E:\MyWork\FRXS\FRXS.Website\bin\NPOI.OpenXml4Net.dll
-E:\MyWork\FRXS\FRXS.Website\bin\NPOI.xml
-E:\MyWork\FRXS\FRXS.Website\bin\NPOI.OOXML.xml
-E:\MyWork\FRXS\FRXS.Website\bin\NPOI.OpenXml4Net.xml
