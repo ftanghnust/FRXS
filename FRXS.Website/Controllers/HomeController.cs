@@ -229,6 +229,7 @@ namespace FRXS.Website.Controllers
         //根据权限获取菜单
         public ActionResult GetMenu()
         {
+            string loginName =  CookieHelper.Cookie.GetCookie(CookieHelper.LoginCookieName);
             string deptName = HttpUtility.UrlDecode(CookieHelper.Cookie.GetCookie(CookieHelper.DeptCookieName), Encoding.GetEncoding("UTF-8")); 
             List<Node> roots = new List<Node>();
 
@@ -251,7 +252,7 @@ namespace FRXS.Website.Controllers
             {
                 childrens1.Add(temp3);
             }
-            if (deptName != "机采科")  //对于部分机采科部分帐号可以查收的，需修改此处条件 ！！！
+            if (deptName != "机采科" || loginName == "Y047" || loginName == "Y088")  //对于部分机采科部分帐号可以查收的，需修改此处条件 ！！！
             {
                 childrens1.Add(temp4);
             }
