@@ -1,0 +1,103 @@
+﻿@{
+    ViewBag.Title = "AddOrEdit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/css/jquery.autocomplete.css" rel="stylesheet" />
+<style>
+    .table th {
+        text-align: right;
+    }
+</style>
+
+<div id="dlgAdd">
+    <form id="formAdd" autocomplete="off">
+        <table class="table">
+            <tr>
+                <th style="width: 125px">身份证号码：</th>
+                <td>
+                    <input type="hidden" name="ID" id="ID" />
+                    <input type="text" class="easyui-validatebox" style="width: 170px;" data-options="required:'true',missingMessage:'请输入身份证号码',validType:'idcared'" name="IDCard" id="IDCard" />
+                </td>
+            </tr>
+            <tr>
+                <th>献血者姓名：</th>
+                <td>
+                    <input type="text" class="easyui-validatebox" style="width: 170px;" data-options="required:'true',missingMessage:'请输入献血者姓名'" name="Name" id="Name" />
+                </td>
+            </tr>
+            <tr>
+                <th>手机号码：</th>
+                <td>
+                    <input type="text" class="easyui-validatebox" style="width: 170px;" data-options="required:'true',missingMessage:'请输入手机号码',validType:'phoneRex'" name="BZ1" id="BZ1" />
+                </td>
+            </tr>
+            <tr>
+                <th>户名：</th>
+                <td>
+                    <input type="text" class="easyui-validatebox" style="width: 170px;" data-options="required:'true',missingMessage:'请输入户名'" id="AccountName" name="AccountName">
+            </tr>
+            <tr>
+                <th>银行帐号：</th>
+                <td>
+                    <input type="text" class="easyui-validatebox" style="width: 170px;" data-options="required:'true',missingMessage:'请输入银行卡号',validType:'bankIdCard'" id="BankAccount" name="BankAccount">
+                </td>
+            </tr>
+            <tr>
+                <th>开户行：</th>
+                <td>
+                    <input type="text" class="easyui-validatebox" style="width: 170px;" data-options="required:'true',missingMessage:'请输入开户行'" id="BankName" name="BankName">
+                </td>
+            </tr>
+            <tr>
+                <th>与持卡人关系：</th>
+                <td>
+                    <select class="easyui-combobox" name="BZ3" id="BZ3" style="width: 100%;" data-options="required:'true',editable:false,missingMessage:'请选择与持卡人关系',panelHeight:'auto'">
+                        <option value="本人">本人</option>
+                        <option value="父母">父母</option>
+                        <option value="子女">子女</option>
+                        <option value="夫妻">夫妻</option>
+                        <option value="朋友">朋友</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>是否通过：</th>
+                <td>
+                    <input type="radio" name="IsPass" value="是">是&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="IsPass" value="否">否
+                </td>
+            </tr>
+            <tr id="trOutReason">
+                <th>淘汰方式：</th>
+                <td>
+                    <input type="radio" name="OutReason" value="体检">体检
+                    <input type="radio" name="OutReason" value="采集">采集
+                </td>
+            </tr>
+            <tr id="trCollectionNum">
+                <th>采集血量：</th>
+                <td>
+                    <select class="easyui-combobox" name="CollectionNum" id="CollectionNum" style="width: 100%;" data-options="editable:false,missingMessage:'请选择采集血量',panelHeight:'auto',onSelect:collectionNumOnSelect">
+                        <option value="0.5-1U">0.5-1U</option>
+                        <option value="1.5U">1.5U</option>
+                        <option value="2U">2U</option>
+                    </select>
+                </td>
+            </tr>
+            <tr id="trFee">
+                <th>应付金额（元）：</th>
+                <td>
+                    <input type="text" class="easyui-numberbox" style="width: 170px;" id="Fee" name="Fee" data-options="min:0,precision:2,required:'true',missingMessage:'请输入应付金额'">
+                </td>
+            </tr>
+
+        </table>
+    </form>
+</div>
+
+
+@section scripts
+{
+    <script src="../Content/js/jquery.autocomplete.min.js"></script>
+    <script src="../Content/js/trafficfeeAddOrEdit.js"></script>
+}

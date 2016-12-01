@@ -1,0 +1,132 @@
+﻿@{
+    ViewBag.Title = "Combotree";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript">
+    $(function() {
+        $("#combotree").combotree({
+            multiple: true,      //是否多选
+            width:200,
+            data: [{
+                id: '芙蓉兴盛',
+                text: '芙蓉兴盛',
+                state: 'closed',
+                children: [{
+                    id: '电商',
+                    text: '电商'
+                }, {
+                    id: 'Item12',
+                    text: 'Item12'
+                }, {
+                    id: 'Item12',
+                    text: 'Item12'
+                }, {
+                    id: 'Item12',
+                    text: 'Item12'
+                }]
+            }, {
+                id: '芙蓉兴盛',
+                text: '芙蓉兴盛',
+                children: [{
+                    id: '安卓',
+                    text: '安卓'
+                }, {
+                    id: 'Item12',
+                    text: 'Item12'
+                }, {
+                    id: 'Item12',
+                    text: 'Item12'
+                }, {
+                    id: 'Item12',
+                    text: 'Item12'
+                }]
+            }],
+            onSelect: function (node) {
+            }
+        });
+
+    });
+
+
+    function getValues() {
+        var node = $('#combotree').combotree('getValues');
+        
+        if (node.toString()) {
+            $.messager.alert("选中的值", node.toString(), "info");
+        }
+    }
+
+</script>
+<div style="margin: 20px">
+    
+    <div id="combotree"></div>
+    <br /><br />
+    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" onclick="getValues()">获取选中值</a>
+</div>
+
+
+
+<!--程序源码展示-->
+<textarea style="width: 60%; height: 600px; float: left; margin-left: 20px; line-height: 20px; font-size: 13px;">
+    <script type="text/javascript">
+        $(function () {
+            $("#combotree").combotree({
+                multiple: true,      //是否多选
+                width: 200,
+                data: [{
+                    id: '芙蓉兴盛',
+                    text: '芙蓉兴盛',
+                    state: 'closed',
+                    children: [{
+                        id: '电商',
+                        text: '电商'
+                    }, {
+                        id: 'Item12',
+                        text: 'Item12'
+                    }, {
+                        id: 'Item12',
+                        text: 'Item12'
+                    }, {
+                        id: 'Item12',
+                        text: 'Item12'
+                    }]
+                }, {
+                    id: '芙蓉兴盛',
+                    text: '芙蓉兴盛',
+                    children: [{
+                        id: '安卓',
+                        text: '安卓'
+                    }, {
+                        id: 'Item12',
+                        text: 'Item12'
+                    }, {
+                        id: 'Item12',
+                        text: 'Item12'
+                    }, {
+                        id: 'Item12',
+                        text: 'Item12'
+                    }]
+                }],
+                onSelect: function (node) {
+                }
+            });
+
+        });
+
+
+        function getValues() {
+            var node = $('#combotree').combotree('getValues');
+
+            if (node.toString()) {
+                $.messager.alert("选中的值", node.toString(), "info");
+            }
+        }
+
+</script>
+<div style="margin: 20px">
+    
+    <div id="combotree"></div>
+    <br /><br />
+    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" onclick="getValues()">获取选中值</a>
+</div>
+</textarea>

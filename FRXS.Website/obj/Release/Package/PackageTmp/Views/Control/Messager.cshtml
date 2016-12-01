@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "Messager";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript">
+    function alertMessager() {
+        $.messager.alert("提示", "你点到我了","info");
+    }
+
+    function alertMessagerIcon() {
+        //info warning question error
+        $.messager.alert("提示", "注意注意？", "warning");
+    }
+
+    function confirmMessager() {
+        $.messager.confirm("提示", "确定要删除？",function (r) {
+            if(r) {
+                alert("你点击了确定");
+            }
+        });
+    }
+
+</script>
+
+<div style="margin: 20px;">
+<br />
+<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" onclick="alertMessager()">单按钮提示</a>
+<br />
+<br />
+<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" onclick="alertMessagerIcon()">单按钮提示icon</a>
+<br />
+<br />
+<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" onclick="confirmMessager()">多按钮提示</a>
+</div>
+
+<!--程序源码展示-->
+<textarea style="width: 60%; height: 600px; float: left; margin-left: 20px; line-height: 20px; font-size: 13px;">
+    <script type="text/javascript">
+        function alertMessager() {
+            $.messager.alert("提示", "你点到我了", "info");
+        }
+
+        function alertMessagerIcon() {
+            //info warning question error
+            $.messager.alert("提示", "注意注意？", "warning");
+        }
+
+        function confirmMessager() {
+            $.messager.confirm("提示", "确定要删除？", function (r) {
+                if (r) {
+                    alert("你点击了确定");
+                }
+            });
+        }
+
+</script>
+
+<br />
+<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" onclick="alertMessager()">单按钮提示</a>
+<br />
+<br />
+<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" onclick="alertMessagerIcon()">单按钮提示icon</a>
+<br />
+<br />
+<a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" onclick="confirmMessager()">多按钮提示</a>
+
+</textarea>

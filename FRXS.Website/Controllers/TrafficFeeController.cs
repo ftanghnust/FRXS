@@ -266,21 +266,37 @@ namespace FRXS.Website.Controllers
         {
             using (var db = new FRXSEntities())
             {
-                var trafficFee = db.TrafficFee.Where(p => true);
-                //where 条件
+                //var trafficFee = db.TrafficFee.Where(p => true);
+                ////where 条件
+                //if (!string.IsNullOrEmpty(idcard))
+                //{
+                //    trafficFee = trafficFee.Where(p => p.IDCard.Contains(idcard));
+                //}
+                //var result = trafficFee.OrderByDescending(o => o.CreateTime).GroupBy(p => p.IDCard).Take(10).Select(g => new
+                //{
+                //    IDCard = g.Max(item => item.IDCard),
+                //    Name = g.Max(item => item.Name),
+                //    AccountName = g.Max(item => item.AccountName),
+                //    BankAccount = g.Max(item => item.BankAccount),
+                //    BankName = g.Max(item => item.BankName),
+                //    BZ1 = g.Max(item => item.BZ1)
+                //});
+
+                string Where = " where 1=1 ";
                 if (!string.IsNullOrEmpty(idcard))
                 {
-                    trafficFee = trafficFee.Where(p => p.IDCard.Contains(idcard));
+                    Where = Where + " and IDCard like '%" + idcard + "%'";
                 }
-                var result = trafficFee.OrderByDescending(o => o.CreateTime).GroupBy(p => p.IDCard).Take(10).Select(g => new
-                {
-                    IDCard = g.Max(item => item.IDCard),
-                    Name = g.Max(item => item.Name),
-                    AccountName = g.Max(item => item.AccountName),
-                    BankAccount = g.Max(item => item.BankAccount),
-                    BankName = g.Max(item => item.BankName),
-                    BZ1 = g.Max(item => item.BZ1)
-                });
+
+                string sql = string.Format(@"select top 10 * from 
+                                (
+                                    select 
+		                                row_number() over(partition by IDCard order by CreateTime DESC) as rownum , *        
+                                    from TrafficFee {0}
+                                ) as T
+                                where T.rownum = 1", Where);
+                var result = db.Database.SqlQuery<TrafficFee>(sql).ToList();
+
                 return Content(result.ToJsonString());
             }
         }

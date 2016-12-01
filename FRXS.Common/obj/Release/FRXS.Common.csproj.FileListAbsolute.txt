@@ -1,0 +1,14 @@
+E:\MyWork\FRXS\FRXS.Common\bin\Release\FRXS.Common.dll
+E:\MyWork\FRXS\FRXS.Common\bin\Release\FRXS.Common.pdb
+E:\MyWork\FRXS\FRXS.Common\bin\Release\NPOI.dll
+E:\MyWork\FRXS\FRXS.Common\bin\Release\NPOI.OOXML.dll
+E:\MyWork\FRXS\FRXS.Common\bin\Release\NPOI.OpenXml4Net.dll
+E:\MyWork\FRXS\FRXS.Common\bin\Release\NPOI.OpenXmlFormats.dll
+E:\MyWork\FRXS\FRXS.Common\bin\Release\ICSharpCode.SharpZipLib.dll
+E:\MyWork\FRXS\FRXS.Common\bin\Release\NPOI.xml
+E:\MyWork\FRXS\FRXS.Common\bin\Release\NPOI.OOXML.xml
+E:\MyWork\FRXS\FRXS.Common\bin\Release\NPOI.OpenXml4Net.xml
+E:\MyWork\FRXS\FRXS.Common\obj\Release\FRXS.Common.dll
+E:\MyWork\FRXS\FRXS.Common\obj\Release\FRXS.Common.pdb
+E:\MyWork\FRXS\FRXS.Common\bin\Release\log4net.dll
+E:\MyWork\FRXS\FRXS.Common\bin\Release\log4net.xml

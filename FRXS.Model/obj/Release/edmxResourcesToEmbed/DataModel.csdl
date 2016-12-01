@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FRXSModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+  <EntityContainer Name="FRXSEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="OrgUser" EntityType="FRXSModel.OrgUser" />
+    <EntitySet Name="TrafficFee" EntityType="FRXSModel.TrafficFee" />
+  </EntityContainer>
+  <EntityType Name="OrgUser">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Type="Int32" Name="UserId" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+    <Property Type="String" Name="UserName" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="UserTrueName" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Password" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Dept" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="CreateTime" Precision="3" />
+    <Property Type="DateTime" Name="ModifyTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="TrafficFee">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+    <Property Type="String" Name="Name" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="IDCard" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="OutReason" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CollectionNum" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Decimal" Name="Fee" Precision="18" Scale="0" />
+    <Property Type="String" Name="WorkMan" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="AccountName" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="BankAccount" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="BankName" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="BZ1" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="BZ2" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="BZ3" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="BZ4" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="CreateTime" Precision="3" />
+    <Property Type="DateTime" Name="ModifyTime" Precision="3" />
+    <Property Type="String" Name="IsPass" MaxLength="5" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

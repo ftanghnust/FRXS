@@ -617,6 +617,10 @@
   <ItemGroup>
     <Content Include="Views\Home\SelRegion.cshtml" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Log4Net.config" />
+    <None Include="Properties\PublishProfiles\publish.pubxml" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

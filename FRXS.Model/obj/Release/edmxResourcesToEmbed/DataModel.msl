@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FRXSModelStoreContainer" CdmEntityContainer="FRXSEntities">
+    <EntitySetMapping Name="OrgUser">
+      <EntityTypeMapping TypeName="FRXSModel.OrgUser">
+        <MappingFragment StoreEntitySet="OrgUser">
+          <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Dept" ColumnName="Dept" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserTrueName" ColumnName="UserTrueName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TrafficFee">
+      <EntityTypeMapping TypeName="FRXSModel.TrafficFee">
+        <MappingFragment StoreEntitySet="TrafficFee">
+          <ScalarProperty Name="IsPass" ColumnName="IsPass" />
+          <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="BZ4" ColumnName="BZ4" />
+          <ScalarProperty Name="BZ3" ColumnName="BZ3" />
+          <ScalarProperty Name="BZ2" ColumnName="BZ2" />
+          <ScalarProperty Name="BZ1" ColumnName="BZ1" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="BankAccount" ColumnName="BankAccount" />
+          <ScalarProperty Name="AccountName" ColumnName="AccountName" />
+          <ScalarProperty Name="WorkMan" ColumnName="WorkMan" />
+          <ScalarProperty Name="Fee" ColumnName="Fee" />
+          <ScalarProperty Name="CollectionNum" ColumnName="CollectionNum" />
+          <ScalarProperty Name="OutReason" ColumnName="OutReason" />
+          <ScalarProperty Name="IDCard" ColumnName="IDCard" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

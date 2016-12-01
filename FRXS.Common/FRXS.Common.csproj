@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="NPOI">
       <HintPath>..\packages\NPOI.2.1.3.1\lib\net40\NPOI.dll</HintPath>
     </Reference>
@@ -58,6 +61,11 @@
     <Compile Include="DEncrypt.cs" />
     <Compile Include="FileHandle.cs" />
     <Compile Include="JsonHelper.cs" />
+    <Compile Include="Log\DecryptAdoNetAppender.cs" />
+    <Compile Include="Log\Logger.cs" />
+    <Compile Include="Log\NormalLog.cs" />
+    <Compile Include="Log\ReflectionLayout.cs" />
+    <Compile Include="Log\ReflectionPatternConverter.cs" />
     <Compile Include="NpoiExcelhelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomHelper.cs" />

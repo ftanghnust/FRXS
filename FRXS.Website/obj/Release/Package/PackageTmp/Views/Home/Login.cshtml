@@ -1,0 +1,78 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@FRXS.Website.Common.SiteConfig.Config.SiteName-登录</title>
+    <link rel="stylesheet" href="~/Content/css/login.css" type="text/css" />
+</head>
+    <body>
+      @using (Html.BeginForm())  
+{
+  <table cellspacing="0" cellpadding="0" border="0" width="100%" id="tbLogin">
+  <tr>
+    <td><table cellspacing="0" cellpadding="0" border="0" width="100%">
+      <tr>
+        <td height="561" style="background:url(../Content/images/lbg.gif)"><table cellspacing="0" cellpadding="0" border="0" width="940" align="center">
+          <tr>
+            <td height="238" style="background:url(../Content/images/login01.jpg)">&nbsp;</td>
+          </tr>
+          <tr>
+            <td height="190"><table cellspacing="0" cellpadding="0" border="0" width="100%">
+              <tr>
+                <td width="208" height="190" style="background:url(../Content/images/login02.jpg)">&nbsp;</td>
+                <td width="518" style="background:url(../Content/images/login03.jpg)"><table cellspacing="0" cellpadding="0" border="0" width="320" align="center">
+                  <tr>
+                    <td width="60"><img width="30" height="30" src="~/Content/images/user.gif"></td>
+                    <td width="58" nowrap="nowrap">用户名：</td>
+                    <td width="242"><input type="text" name="adminName" class="input" style="width:180px;" /></td>
+                  </tr>
+                  <tr>
+                    <td><img width="28" height="32" src="~/Content/images/password.gif"></td>
+                    <td>密码：</td>
+                    <td><input type="password" name="passWord" class="input" style="width:180px;" /></td>
+                  </tr>                  
+                  <tr>
+                    <td><img width="32" height="32" src="~/Content/images/valid.png"></td>
+                    <td>验证码：</td>
+                    <td><input type="text" name="verifyCode" class="input" style="width:90px;" />
+                    <div id="ValiCodeImg" style=" display:inline;"><a href="javascript:refreshCode();"><img id="imgVerifyCode" src='@Url.Action("VerifyCode","Home")' style="border-style:none" /></a></div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><input type="hidden" value="Check" name="Action"></td>
+                    <td>&nbsp;</td>
+                    <td height="60"><input type="submit" value="  " class="btnLogin" /></td>
+                  </tr>
+                </table></td>
+                <td width="214" style="background:url(../Content/images/login04.jpg)">&nbsp;</td>
+              </tr>
+            </table></td>
+          </tr>
+          <tr>
+              <td height="133" style="background:url(../Content/images/login05.jpg)">
+                  <table class="MessageError" cellspacing="0" cellpadding="0" border="0" width="260px">
+		            <tr>
+			            <td style="padding-right: 3px;">@Html.Raw(ViewBag.ErrorImage)</td><td align="left" width="100%"><nobr>@ViewBag.ErrorMessage</nobr></td>
+		            </tr>
+	            </table>
+              </td>
+          </tr>
+        </table></td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+      }
+<script type="text/javascript">
+    function refreshCode() {
+        var img = document.getElementById("imgVerifyCode");
+        if (img != null) {
+            var currentDate = new Date();
+            img.src = '@Url.Action("VerifyCode","Home")' + '?t=' + currentDate.getTime();
+        }
+    }
+</script>
+</body>
+</html>

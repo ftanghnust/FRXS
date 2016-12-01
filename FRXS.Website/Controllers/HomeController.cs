@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using FRXS.Common;
 using FRXS.Model;
 using System.Text;
+using FRXS.Common.Log;
 
 namespace FRXS.Website.Controllers
 {
@@ -252,7 +253,7 @@ namespace FRXS.Website.Controllers
             {
                 childrens1.Add(temp3);
             }
-            if (deptName != "机采科" || loginName == "Y047" || loginName == "Y088")  //对于部分机采科部分帐号可以查收的，需修改此处条件 ！！！
+            if (deptName != "机采科" || loginName.ToLower() == "y024" || loginName.ToLower() == "y088")  //对于部分机采科部分帐号可以查收的，需修改此处条件 ！！！
             {
                 childrens1.Add(temp4);
             }
@@ -263,6 +264,15 @@ namespace FRXS.Website.Controllers
                 menuname = "机采交通费",
                 menus = childrens1
             };
+
+            //Logger.GetInstance().DebugLog
+            //(
+            //    new NormalLog
+            //    {
+            //        LogTime = DateTime.Now,
+            //        LogContent = string.Format("loginName：{0}，menus：{1}", loginName, childrens1.ToJson())
+            //    }
+            //);
 
             List<Node> childrens2 = new List<Node>();
             Node temp5 = new Node()

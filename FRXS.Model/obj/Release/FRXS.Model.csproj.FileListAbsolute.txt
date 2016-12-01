@@ -1,0 +1,8 @@
+E:\MyWork\FRXS\FRXS.Model\bin\Release\FRXS.Model.dll.config
+E:\MyWork\FRXS\FRXS.Model\bin\Release\FRXS.Model.dll
+E:\MyWork\FRXS\FRXS.Model\bin\Release\FRXS.Model.pdb
+E:\MyWork\FRXS\FRXS.Model\bin\Release\EntityFramework.dll
+E:\MyWork\FRXS\FRXS.Model\bin\Release\EntityFramework.xml
+E:\MyWork\FRXS\FRXS.Model\bin\Release\zh-Hans\EntityFramework.resources.dll
+E:\MyWork\FRXS\FRXS.Model\obj\Release\FRXS.Model.dll
+E:\MyWork\FRXS\FRXS.Model\obj\Release\FRXS.Model.pdb

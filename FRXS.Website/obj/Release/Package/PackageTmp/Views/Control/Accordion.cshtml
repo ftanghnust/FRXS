@@ -1,0 +1,102 @@
+﻿@{
+    ViewBag.Title = "Accordion";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript">
+    $(function () {
+        $('#accordionDiv').accordion({
+            width: 200,
+            height: 600,
+            fit: false,           //是否填充
+            border: true,        //是否显示边框
+            animate: true,        //是否显示动画
+            //selected:false       //是否默认展开(写上这行代码不管ture false都不展示、去掉默认展示)
+        });
+    });
+
+    function addAccordion() {
+        $('#accordionDiv').accordion('add', {
+            title: '新添加面板',
+            content: 'New Content',
+            iconCls: "icon-undo"
+        });
+    }
+
+</script>
+
+
+<div style="margin: 6px;">
+    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" onclick="addAccordion()">添加一个新的</a>
+</div>
+
+<div style="float: left;">
+    <!-- js创建 -->
+    <div id="accordionDiv">
+        <div title="Title1" iconCls="icon-add">content1</div>
+        <div title="Title2" iconCls="icon-reload">content2</div>
+        <div title="Title3" iconCls="icon-edit">content3</div>
+    </div>
+</div>
+
+<div style="float: left; margin-left: 20px;">
+    <!-- html创建 -->
+    <div class="easyui-accordion" data-options="fit: false,width:200, height: 600">
+        <div title="Title1" iconCls="icon-add">content1</div>
+        <div title="Title2" iconCls="icon-reload">content2</div>
+        <div title="Title3" iconCls="icon-edit">content3</div>
+    </div>
+</div>
+
+
+
+
+
+
+<!--程序源码展示-->
+<textarea style="width: 60%; height: 600px; float: left; margin-left: 20px; line-height: 20px; font-size: 13px;">
+    <script type="text/javascript">
+        $(function () {
+            $('#accordionDiv').accordion({
+                width: 200,
+                height: 600,
+                fit: false,           //是否填充
+                border: true,        //是否显示边框
+                animate: true,        //是否显示动画
+                //selected:false       //是否默认展开(写上这行代码不管ture false都不展示、去掉默认展示)
+            });
+        });
+
+        function addAccordion() {
+            $('#accordionDiv').accordion('add', {
+                title: '新添加面板',
+                content: 'New Content',
+                iconCls: "icon-undo"
+            });
+        }
+
+</script>
+
+
+<div style="margin: 6px;">
+    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" onclick="addAccordion()">添加一个新的</a>
+</div>
+
+<div style="float: left;">
+    <!-- js创建 -->
+    <div id="accordionDiv">
+        <div title="Title1" iconCls="icon-add">content1</div>
+        <div title="Title2" iconCls="icon-reload">content2</div>
+        <div title="Title3" iconCls="icon-edit">content3</div>
+    </div>
+</div>
+
+<div style="float: left; margin-left: 20px;">
+    <!-- html创建 -->
+    <div class="easyui-accordion" data-options="fit: false,width:200, height: 600">
+        <div title="Title1" iconCls="icon-add">content1</div>
+        <div title="Title2" iconCls="icon-reload">content2</div>
+        <div title="Title3" iconCls="icon-edit">content3</div>
+    </div>
+</div>
+
+</textarea>

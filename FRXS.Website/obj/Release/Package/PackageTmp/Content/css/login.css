@@ -1,0 +1,16 @@
+*{overflow:hidden; font-size:9pt;}
+a {color: #047ecb;text-decoration:none;}
+a:hover{text-decoration:underline;}
+body{margin-left:0px;margin-top:0px;margin-right: 0px;margin-bottom:0px;background-image: url(../images/bg.gif);background-repeat:repeat-x;}
+.input{height:24px;background:url(../images/inputbg.gif) repeat-x; border:solid 1px #d1d1d1;font-size:14px; font-family:Verdana, Geneva,sans-serif;margin-top:10px;float:left;}
+.btnLogin{width:95px;height:34px;background:url(../images/login.gif) no-repeat;border:0;
+cursor:pointer;}
+#ValiCodeImg{float:right;padding-top:15px;margin-top:-3px;margin-right:35px;width:80px;overflow:hidden;}
+/*.MessageSuccess {padding:2px;font-family:Tahoma, Arial, Helvetica;	font-size: 100%;color: #334433;border: solid;border-width: 1px;
+	border-color: #00be00;background-color: #E9FFEB;}
+.MessageError{margin:0px auto;width:200px; padding: 2px;font-family: Tahoma, Arial, Helvetica;font-size:100%;color:#443333;border:solid;border-width: 1px;border-color:#f60;background-color: #FFF2E9;
+}*/
+.MessageError{margin:0px auto;width:160px;line-height:28px;}
+.MessageError nobr{font-size:14px;color:#999;}
+*html .clearfix{height:1%;}
+.errorfont {padding-left:8px;color:red;}

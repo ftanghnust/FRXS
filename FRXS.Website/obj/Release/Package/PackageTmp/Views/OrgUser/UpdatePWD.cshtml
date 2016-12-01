@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "UpdatePWD";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .table th {
+        text-align: right;
+    }
+</style>
+<div id="dlgAdd">
+    <form id="formAdd" autocomplete="off">
+        <table class="table">
+            <tr>
+                <th>原始密码：</th>
+                <td>
+                    <input type="password" class="easyui-validatebox" style="width: 170px;" data-options="required:'true',missingMessage:'请输入原始密码'" name="OldPwd" id="OldPwd" />
+                </td>
+            </tr>
+            <tr>
+                <th>新密码：</th>
+                <td>
+                    <input type="password" class="easyui-validatebox" style="width: 170px;" data-options="required:'true',missingMessage:'请输入新密码'" id="NewPwd" name="NewPwd">
+            </tr>
+            <tr>
+                <th>确认新密码：</th>
+                <td>
+                    <input type="password" class="easyui-validatebox" style="width: 170px;" data-options="required:'true',missingMessage:'请再次输入新密码',validType:'equalTo[\'#NewPwd\']'" id="NewPwd1" name="NewPwd1">
+                </td>
+            </tr>
+            <tr>
+        </table>
+    </form>
+</div>
+
+
+@section scripts
+{
+    <script src="../Content/js/updatePwd.js"></script>
+}

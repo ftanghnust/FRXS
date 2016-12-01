@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FRXSModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="FRXSModelStoreContainer">
+    <EntitySet Name="OrgUser" EntityType="FRXSModel.Store.OrgUser" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+    <EntitySet Name="TrafficFee" EntityType="FRXSModel.Store.TrafficFee" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+  </EntityContainer>
+  <EntityType Name="OrgUser">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserTrueName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="Dept" Type="varchar" MaxLength="50" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="ModifyTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TrafficFee">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="IDCard" Type="varchar" MaxLength="50" />
+    <Property Name="OutReason" Type="varchar" MaxLength="10" />
+    <Property Name="CollectionNum" Type="varchar" MaxLength="50" />
+    <Property Name="Fee" Type="decimal" />
+    <Property Name="WorkMan" Type="varchar" MaxLength="50" />
+    <Property Name="AccountName" Type="varchar" MaxLength="50" />
+    <Property Name="BankAccount" Type="varchar" MaxLength="50" />
+    <Property Name="BankName" Type="varchar" MaxLength="50" />
+    <Property Name="IsPass" Type="varchar" MaxLength="5" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="ModifyTime" Type="datetime" />
+    <Property Name="BZ1" Type="varchar" MaxLength="50" />
+    <Property Name="BZ2" Type="varchar" MaxLength="50" />
+    <Property Name="BZ3" Type="varchar" MaxLength="50" />
+    <Property Name="BZ4" Type="varchar" MaxLength="50" />
+  </EntityType>
+</Schema>
